@@ -5,7 +5,7 @@
  * Language: JavaScript (ECMAScript 6+)
  * Description: Client-side interactive logic for Omniscent homepage.
  *              Includes shopping cart handling, hero carousel, sticky header,
- *              newsletter validation, and UI micro-interactions.
+ *              search modal, mobile navigation, newsletter validation, and UI micro-interactions.
  * ==========================================================================
  */
 
@@ -114,28 +114,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
        MODULE 3: HERO CAROUSEL CONTROLS
-       Handles slides 01 / 04, updating slides, text content and indicators.
+       Handles slides 01 / 04, updating slides, text content, and hero visual image.
        ========================================================================== */
     const heroSlidesData = [
         {
             tagline: "MORE THAN A FRAGRANCE",
             title: `A Signature<br>of <span class="accent-italic">You</span>`,
-            description: "Discover luxury perfumes crafted to leave a lasting impression."
+            description: "Discover luxury perfumes crafted to leave a lasting impression.",
+            image: "hero-slide-1.png",
+            alt: "Omniscent Signature Rose Perfume on Pedestal with Cherry Blossoms"
         },
         {
             tagline: "TIMELESS ELEGANCE",
             title: `The Art<br>of <span class="accent-italic">Essence</span>`,
-            description: "Immerse yourself in rare botanicals and masterfully blended notes."
+            description: "Immerse yourself in rare botanicals and masterfully blended notes.",
+            image: "hero-slide-2.png",
+            alt: "Omniscent Midnight Sapphire Perfume Bottle in Luxury Archway"
         },
         {
             tagline: "EXCLUSIVE RELEASE",
             title: `Symphony<br>of <span class="accent-italic">Scent</span>`,
-            description: "Bold, seductive fragrances formulated for unforgettable moments."
+            description: "Bold, seductive fragrances formulated for unforgettable moments.",
+            image: "hero-slide-3.png",
+            alt: "Omniscent Golden Amber Perfume with Warm Radiance"
         },
         {
             tagline: "BESPOKE PERFUMERY",
             title: `Pure Luxury<br><span class="accent-italic">Defined</span>`,
-            description: "Hand-poured artisan aromas that awaken the senses."
+            description: "Hand-poured artisan aromas that awaken the senses.",
+            image: "hero-slide-4.png",
+            alt: "Omniscent Ruby Velvet Perfume Bottle with Floral Silhouette"
         }
     ];
 
@@ -144,11 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTaglineElement = document.getElementById('heroTaglineText');
     const heroTitleElement = document.getElementById('heroTitle');
     const heroDescElement = document.getElementById('heroDescription');
+    const heroImgElement = document.querySelector('.hero-img');
     const prevSlideBtn = document.getElementById('prevSlide');
     const nextSlideBtn = document.getElementById('nextSlide');
 
+    // Determine correct relative image path prefix (supports root index.html and Pages/ directory)
+    const getImgPrefix = () => {
+        if (heroImgElement && heroImgElement.getAttribute('src') && heroImgElement.getAttribute('src').startsWith('../')) {
+            return '../images/';
+        }
+        return 'images/';
+    };
+
     /**
-     * Render the active slide data with subtle transition
+     * Render the active slide data and hero image with elegant crossfade
      * @param {number} index 
      */
     const renderSlide = (index) => {
@@ -168,6 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
         });
 
+        // Smooth hero image crossfade transition
+        if (heroImgElement) {
+            heroImgElement.classList.add('fade-out');
+        }
+
         setTimeout(() => {
             if (heroTaglineElement) heroTaglineElement.textContent = slide.tagline;
             if (heroTitleElement) heroTitleElement.innerHTML = slide.title;
@@ -177,7 +199,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.style.opacity = '1';
                 el.style.transform = 'translateY(0)';
             });
-        }, 250);
+
+            if (heroImgElement) {
+                const targetSrc = getImgPrefix() + slide.image;
+                heroImgElement.src = targetSrc;
+                heroImgElement.alt = slide.alt;
+                
+                // Remove fade-out class once new image loads
+                heroImgElement.onload = () => {
+                    heroImgElement.classList.remove('fade-out');
+                };
+                // Fallback timeout in case image is already cached
+                setTimeout(() => {
+                    heroImgElement.classList.remove('fade-out');
+                }, 120);
+            }
+        }, 220);
     };
 
     if (prevSlideBtn) {
@@ -196,7 +233,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       MODULE 4: NEWSLETTER FORM VALIDATION
+       MODULE 4: LUXURY SEARCH MODAL OVERLAY
+       Handles search overlay open/close, focus, and quick-tag filtering.
+       ========================================================================== */
+    const searchBtn = document.getElementById('searchBtn');
+    const searchModal = document.getElementById('searchModal');
+    const searchBackdrop = document.getElementById('searchBackdrop');
+    const searchCloseBtn = document.getElementById('searchCloseBtn');
+    const searchField = document.getElementById('searchField');
+    const quickTags = document.querySelectorAll('.quick-tag');
+
+    const openSearchModal = () => {
+        if (!searchModal) return;
+        searchModal.classList.add('active');
+        searchModal.setAttribute('aria-hidden', 'false');
+        setTimeout(() => {
+            if (searchField) searchField.focus();
+        }, 100);
+    };
+
+    const closeSearchModal = () => {
+        if (!searchModal) return;
+        searchModal.classList.remove('active');
+        searchModal.setAttribute('aria-hidden', 'true');
+    };
+
+    if (searchBtn) searchBtn.addEventListener('click', openSearchModal);
+    if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearchModal);
+    if (searchBackdrop) searchBackdrop.addEventListener('click', closeSearchModal);
+
+    // ESC key closes search modal
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchModal && searchModal.classList.contains('active')) {
+            closeSearchModal();
+        }
+    });
+
+    // Quick tag clicks populate search input
+    quickTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            const query = tag.getAttribute('data-query');
+            if (searchField && query) {
+                searchField.value = query;
+                searchField.focus();
+            }
+        });
+    });
+
+
+    /* ==========================================================================
+       MODULE 5: NEWSLETTER FORM VALIDATION
        Validates email input and presents confirmation state.
        ========================================================================== */
     const newsletterForm = document.getElementById('newsletterForm');
@@ -241,31 +327,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       MODULE 5: MOBILE MENU DRAWER (RESPONSIVE)
+       MODULE 6: MOBILE MENU DRAWER (RESPONSIVE)
        Toggles mobile navigation view on small viewports.
        ========================================================================== */
     const navToggle = document.getElementById('navToggle');
-    const navCenter = document.querySelector('.nav-center');
+    const mobileDrawer = document.getElementById('mobileDrawer');
 
-    if (navToggle && navCenter) {
+    if (navToggle && mobileDrawer) {
         navToggle.addEventListener('click', () => {
-            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !isExpanded);
-            
-            // Toggle display style for mobile devices
-            if (navCenter.style.display === 'flex') {
-                navCenter.style.display = 'none';
-            } else {
-                navCenter.style.display = 'flex';
-                navCenter.style.position = 'absolute';
-                navCenter.style.top = '100%';
-                navCenter.style.left = '1rem';
-                navCenter.style.right = '1rem';
-                navCenter.style.backgroundColor = 'rgba(247, 239, 233, 0.98)';
-                navCenter.style.flexDirection = 'column';
-                navCenter.style.padding = '1.5rem';
-                navCenter.style.boxShadow = '0 15px 30px rgba(0,0,0,0.1)';
-            }
+            const isOpen = mobileDrawer.classList.contains('open');
+            navToggle.setAttribute('aria-expanded', !isOpen);
+            mobileDrawer.classList.toggle('open');
+        });
+
+        // Close drawer when clicking mobile links
+        mobileDrawer.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
         });
     }
 

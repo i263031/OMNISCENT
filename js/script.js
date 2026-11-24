@@ -114,28 +114,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
        MODULE 3: HERO CAROUSEL CONTROLS
-       Handles slides 01 / 04, updating slides, text content and indicators.
+       Handles slides 01 / 04, updating slides, text content, and hero visual image.
        ========================================================================== */
     const heroSlidesData = [
         {
             tagline: "MORE THAN A FRAGRANCE",
             title: `A Signature<br>of <span class="accent-italic">You</span>`,
-            description: "Discover luxury perfumes crafted to leave a lasting impression."
+            description: "Discover luxury perfumes crafted to leave a lasting impression.",
+            image: "hero-slide-1.png",
+            alt: "Omniscent Signature Rose Perfume on Pedestal with Cherry Blossoms"
         },
         {
             tagline: "TIMELESS ELEGANCE",
             title: `The Art<br>of <span class="accent-italic">Essence</span>`,
-            description: "Immerse yourself in rare botanicals and masterfully blended notes."
+            description: "Immerse yourself in rare botanicals and masterfully blended notes.",
+            image: "hero-slide-2.png",
+            alt: "Omniscent Midnight Sapphire Perfume Bottle in Luxury Archway"
         },
         {
             tagline: "EXCLUSIVE RELEASE",
             title: `Symphony<br>of <span class="accent-italic">Scent</span>`,
-            description: "Bold, seductive fragrances formulated for unforgettable moments."
+            description: "Bold, seductive fragrances formulated for unforgettable moments.",
+            image: "hero-slide-3.png",
+            alt: "Omniscent Golden Amber Perfume with Warm Radiance"
         },
         {
             tagline: "BESPOKE PERFUMERY",
             title: `Pure Luxury<br><span class="accent-italic">Defined</span>`,
-            description: "Hand-poured artisan aromas that awaken the senses."
+            description: "Hand-poured artisan aromas that awaken the senses.",
+            image: "hero-slide-4.png",
+            alt: "Omniscent Ruby Velvet Perfume Bottle with Floral Silhouette"
         }
     ];
 
@@ -144,11 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTaglineElement = document.getElementById('heroTaglineText');
     const heroTitleElement = document.getElementById('heroTitle');
     const heroDescElement = document.getElementById('heroDescription');
+    const heroImgElement = document.querySelector('.hero-img');
     const prevSlideBtn = document.getElementById('prevSlide');
     const nextSlideBtn = document.getElementById('nextSlide');
 
+    // Determine correct relative image path prefix (supports root index.html and Pages/ directory)
+    const getImgPrefix = () => {
+        if (heroImgElement && heroImgElement.getAttribute('src') && heroImgElement.getAttribute('src').startsWith('../')) {
+            return '../images/';
+        }
+        return 'images/';
+    };
+
     /**
-     * Render the active slide data with subtle transition
+     * Render the active slide data and hero image with elegant crossfade
      * @param {number} index 
      */
     const renderSlide = (index) => {
@@ -168,6 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
         });
 
+        // Smooth hero image crossfade transition
+        if (heroImgElement) {
+            heroImgElement.classList.add('fade-out');
+        }
+
         setTimeout(() => {
             if (heroTaglineElement) heroTaglineElement.textContent = slide.tagline;
             if (heroTitleElement) heroTitleElement.innerHTML = slide.title;
@@ -177,7 +199,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.style.opacity = '1';
                 el.style.transform = 'translateY(0)';
             });
-        }, 250);
+
+            if (heroImgElement) {
+                const targetSrc = getImgPrefix() + slide.image;
+                heroImgElement.src = targetSrc;
+                heroImgElement.alt = slide.alt;
+                
+                // Remove fade-out class once new image loads
+                heroImgElement.onload = () => {
+                    heroImgElement.classList.remove('fade-out');
+                };
+                // Fallback timeout in case image is already cached
+                setTimeout(() => {
+                    heroImgElement.classList.remove('fade-out');
+                }, 120);
+            }
+        }, 220);
     };
 
     if (prevSlideBtn) {
