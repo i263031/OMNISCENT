@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fragrance Quiz / Scents Finder — OMNISCENT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="page8-fragrance-quiz.css" />
+</head>
+<body id="top">
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="page6-signature-floral.html" class="brand" aria-label="OMNISCENT Home">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="roseGoldQuiz" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#F2C6B8" />
+              <stop offset="50%" stop-color="#CC6E68" />
+              <stop offset="100%" stop-color="#8A3F3A" />
+            </linearGradient>
+          </defs>
+          <path d="M24 5C26 9 30 10 28 14C26 16 21 15 21 12C21 9.5 23 7 24 5Z" fill="url(#roseGoldQuiz)" opacity="0.85" />
+          <rect x="20" y="15" width="8" height="4" rx="1.2" fill="url(#roseGoldQuiz)" />
+          <rect x="15" y="19" width="18" height="19" rx="7" stroke="url(#roseGoldQuiz)" stroke-width="2" fill="rgba(204,110,104,0.12)" />
+          <path d="M29 33C33 35 37 39 40 41" stroke="url(#roseGoldQuiz)" stroke-width="2" stroke-linecap="round" />
+          <circle cx="24" cy="28" r="3.2" fill="url(#roseGoldQuiz)" opacity="0.7" />
+        </svg>
+        <span class="brand-name">OMNISCENT</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <div class="nav-dropdown">
+          <button class="nav-pill-plain" type="button" id="shopMenuBtn" aria-expanded="false" aria-haspopup="true">
+            Shop All <span aria-hidden="true">⌄</span>
+          </button>
+          <div class="dropdown-panel" id="shopDropdown" role="menu">
+            <a href="page6-signature-floral.html" role="menuitem" class="dropdown-item">Signature Floral EDP</a>
+            <a href="page7-woody-amber.html" role="menuitem" class="dropdown-item">Woody Amber Extrait</a>
+            <a href="page8-fragrance-quiz.html" role="menuitem" class="dropdown-item current">Fragrance Quiz / Finder</a>
+          </div>
+        </div>
+        <a href="page7-woody-amber.html" class="nav-link">Men</a>
+        <a href="page6-signature-floral.html" class="nav-link">Women</a>
+        <a href="page7-woody-amber.html" class="nav-link">Unisex</a>
+        <a href="page8-fragrance-quiz.html" class="nav-pill active">Scents Finder</a>
+      </nav>
+
+      <div class="header-actions">
+        <span class="action-divider" aria-hidden="true"></span>
+        <button class="icon-btn" type="button" id="searchToggleBtn" aria-label="Search fragrances">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" stroke-linecap="round" /></svg>
+        </button>
+        <button class="icon-btn cart-btn" type="button" id="cartToggleBtn" aria-label="Open shopping bag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 12H7L6 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-drawer" id="searchDrawer" hidden>
+      <div class="container search-inner">
+        <input type="search" id="searchInput" placeholder="Search floral, woody amber, notes, or classics..." aria-label="Search fragrances" />
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Quiz Intro & Workspace -->
+    <section class="quiz-hero container" id="quizStage">
+      <div class="quiz-intro">
+        <p class="eyebrow">ATELIER SCENTS FINDER · PERSONALIZED MATCH</p>
+        <h1 class="quiz-title">Find Your <em>Signature</em> Scent</h1>
+        <p class="quiz-lead">
+          Answer five sensory questions to reveal the fragrance profile, concentration, and bottle tailored to your chemistry and mood.
+        </p>
+
+        <!-- Editorial Step Pagination (Matches 01 / 04 + Circular Arrows) -->
+        <div class="step-controls" id="stepControls">
+          <span class="step-counter" id="stepCounter"><strong>01</strong> / 05</span>
+          <div class="arrow-pair">
+            <button type="button" class="circle-arrow" id="prevStepBtn" aria-label="Previous question" disabled>‹</button>
+            <button type="button" class="circle-arrow" id="nextStepBtn" aria-label="Next question" disabled>›</button>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span class="progress-fill" id="progressFill" style="width: 20%"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Quiz Card -->
+      <div class="quiz-card" id="quizCard">
+        <div class="question-head">
+          <span class="q-badge" id="questionBadge">QUESTION 01</span>
+          <h2 id="questionPrompt">When do you reach for fragrance most?</h2>
+          <p id="questionHint">Choose the setting that feels most natural to your lifestyle.</p>
+        </div>
+
+        <div class="options-grid" id="optionsGrid" role="radiogroup" aria-labelledby="questionPrompt"></div>
+
+        <div class="quiz-foot">
+          <button type="button" class="btn-ghost" id="skipQuizBtn">Reset Answers</button>
+          <button type="button" class="btn-primary" id="continueBtn" disabled>
+            <span id="continueLabel">Next Question</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Personalized Result View (Hidden until quiz complete) -->
+    <section class="result-section container" id="resultSection" hidden>
+      <div class="result-grid">
+        <div class="result-arch-card">
+          <span class="match-pill" id="matchPercentBadge">96% SCENT MATCH</span>
+          <div class="result-bottle-art" id="resultBottleArt"></div>
+          <p class="archetype-label" id="archetypeLabel">THE LUMINOUS ROMANTIC</p>
+          <h2 id="matchedProductName">Signature <em>Floral</em> EDP</h2>
+          <p class="matched-price" id="matchedPrice">Rs. 22,999 · 50 ml</p>
+        </div>
+
+        <div class="result-details">
+          <p class="eyebrow">YOUR OLFACTORY PROFILE</p>
+          <h2 class="result-heading">Crafted for <em>Your</em> Chemistry</h2>
+          <p class="result-summary" id="resultSummary"></p>
+
+          <div class="notes-pill-row" id="resultNotesRow"></div>
+
+          <!-- Scent Profile Breakdown -->
+          <div class="dna-card">
+            <h3>Scent DNA Breakdown</h3>
+            <div class="dna-bars" id="dnaBars"></div>
+          </div>
+
+          <div class="result-actions">
+            <button type="button" class="btn-primary" id="addMatchCartBtn">
+              <span>Add Matched Scent to Bag</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <a href="page6-signature-floral.html" class="btn-outline" id="viewMatchLink">View Full Product →</a>
+            <button type="button" class="btn-ghost" id="retakeQuizBtn">Retake Quiz</button>
+          </div>
+
+          <!-- Secondary Runner-Up -->
+          <div class="runner-up-box" id="runnerUpBox">
+            <div>
+              <span class="runner-tag">COMPLEMENTARY LAYERING PAIR</span>
+              <strong id="runnerUpName">Woody Amber Extrait</strong>
+              <span id="runnerUpMeta">Rs. 26,499 · 50 ml</span>
+            </div>
+            <a href="page7-woody-amber.html" class="runner-link" id="runnerUpLink">Explore →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stay in the Loop Banner -->
+    <section class="newsletter-banner">
+      <div class="container newsletter-inner">
+        <div>
+          <h2>Stay in the Loop</h2>
+          <p>Get exclusive offers and new arrivals.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" id="newsletterEmail" placeholder="Enter your email address" required aria-label="Email address" />
+          <button type="submit">Subscribe →</button>
+        </form>
+      </div>
+      <p class="newsletter-msg" id="newsletterMsg" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <a href="page6-signature-floral.html" class="brand"><span class="brand-name">OMNISCENT</span></a>
+      <nav class="footer-nav" aria-label="Footer Navigation">
+        <a href="page6-signature-floral.html">Shop All</a>
+        <a href="page7-woody-amber.html">Men</a>
+        <a href="page6-signature-floral.html">Women</a>
+        <a href="page7-woody-amber.html">Unisex</a>
+        <a href="page8-fragrance-quiz.html">Scents Finder</a>
+      </nav>
+      <div class="social-links" aria-label="Social Media">
+        <a href="#top" aria-label="Instagram">IG</a>
+        <a href="#top" aria-label="TikTok">TT</a>
+        <a href="#top" aria-label="Facebook">FB</a>
+        <a href="#top" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2025 Omniscent. All rights reserved. · Shop #12, Centaurus Mall, Islamabad, Pakistan</p>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Shopping Bag">
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+    <div class="cart-panel">
+      <div class="cart-head">
+        <h3>Your Bag</h3>
+        <button type="button" class="close-btn" id="closeCartBtn" aria-label="Close bag">✕</button>
+      </div>
+      <div class="cart-items" id="cartItemsList"></div>
+      <div class="cart-foot">
+        <div class="cart-subtotal">
+          <span>Subtotal</span>
+          <strong id="cartSubtotalDisplay">Rs. 0</strong>
+        </div>
+        <button type="button" class="btn-primary full-width" id="checkoutStubBtn">Proceed to Checkout →</button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="page8-fragrance-quiz.js"></script>
+</body>
+</html>
