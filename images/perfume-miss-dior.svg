@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Miss Dior Eau de Parfum bottle">
+  <defs>
+    <radialGradient id="bgBlush1" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#f7e1dc"/>
+      <stop offset="100%" stop-color="#dfbeb8"/>
+    </radialGradient>
+    <linearGradient id="glassPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8c9c7"/>
+      <stop offset="55%" stop-color="#e49b99"/>
+      <stop offset="100%" stop-color="#c97d7b"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="340" rx="22" fill="url(#bgBlush1)"/>
+  <circle cx="90" cy="240" r="28" fill="#f3b6b6" opacity="0.55"/>
+  <circle cx="315" cy="242" r="32" fill="#f3b6b6" opacity="0.55"/>
+  <rect x="170" y="54" width="60" height="40" rx="4" fill="#d9d0ce" stroke="#9e9290" stroke-width="1.5"/>
+  <path d="M150 94 L196 105 L150 116 Z" fill="#a89d9b"/>
+  <path d="M250 94 L204 105 L250 116 Z" fill="#a89d9b"/>
+  <circle cx="200" cy="105" r="9" fill="#c2b8b6"/>
+  <rect x="130" y="114" width="140" height="162" rx="10" fill="url(#glassPink)" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2"/>
+  <rect x="162" y="158" width="76" height="62" rx="4" fill="#fbf3f1" stroke="#d9c0bc" stroke-width="1"/>
+  <text x="200" y="185" text-anchor="middle" fill="#2b2120" font-family="Georgia, serif" font-style="italic" font-size="14">Miss</text>
+  <text x="200" y="205" text-anchor="middle" fill="#2b2120" font-family="Georgia, serif" font-size="15" letter-spacing="1">Dior</text>
+</svg>

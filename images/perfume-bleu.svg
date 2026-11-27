@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Bleu de Chanel Eau de Parfum bottle">
+  <defs>
+    <radialGradient id="bgDark1" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#3a3536"/>
+      <stop offset="100%" stop-color="#171415"/>
+    </radialGradient>
+    <linearGradient id="glassBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#222a38"/>
+      <stop offset="50%" stop-color="#0f141e"/>
+      <stop offset="100%" stop-color="#07090e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="340" rx="22" fill="url(#bgDark1)"/>
+  <polygon points="30,300 95,210 145,260 120,300" fill="#242022" opacity="0.85"/>
+  <polygon points="270,300 315,205 375,280 350,300" fill="#211d1f" opacity="0.85"/>
+  <rect x="165" y="48" width="70" height="44" rx="4" fill="#11151d" stroke="#3c4554" stroke-width="1.5"/>
+  <rect x="180" y="92" width="40" height="14" fill="#2b313c"/>
+  <rect x="122" y="106" width="156" height="172" rx="10" fill="url(#glassBlue)" stroke="#404b5e" stroke-width="2"/>
+  <rect x="132" y="116" width="136" height="152" rx="6" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1.5"/>
+  <text x="200" y="176" text-anchor="middle" fill="#e6ecf5" font-family="Georgia, serif" font-size="18" letter-spacing="3">BLEU</text>
+  <text x="200" y="196" text-anchor="middle" fill="#b7c2d4" font-family="Georgia, serif" font-size="10" letter-spacing="2">DE</text>
+  <text x="200" y="218" text-anchor="middle" fill="#e6ecf5" font-family="Georgia, serif" font-size="16" letter-spacing="3">CHANEL</text>
+</svg>

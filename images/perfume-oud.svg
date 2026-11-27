@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Omniscent Oud Royale Unisex Extrait bottle">
+  <defs>
+    <radialGradient id="bgOud" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#efe0d8"/>
+      <stop offset="100%" stop-color="#d5beb4"/>
+    </radialGradient>
+    <linearGradient id="oudGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60463f"/>
+      <stop offset="55%" stop-color="#3c2824"/>
+      <stop offset="100%" stop-color="#201412"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="340" rx="22" fill="url(#bgOud)"/>
+  <rect x="174" y="52" width="52" height="38" rx="4" fill="#c79e7a"/>
+  <rect x="136" y="96" width="128" height="178" rx="14" fill="url(#oudGlass)" stroke="#c79e7a" stroke-width="2"/>
+  <rect x="158" y="148" width="84" height="72" rx="4" fill="#faf1ec"/>
+  <text x="200" y="180" text-anchor="middle" fill="#231a18" font-family="Georgia, serif" font-size="12" letter-spacing="2">OUD</text>
+  <text x="200" y="200" text-anchor="middle" fill="#8b5a55" font-family="Georgia, serif" font-style="italic" font-size="13">Royale</text>
+</svg>

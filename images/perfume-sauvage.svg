@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Sauvage Elixir bottle">
+  <defs>
+    <radialGradient id="bgDark2" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#353133"/>
+      <stop offset="100%" stop-color="#141112"/>
+    </radialGradient>
+    <linearGradient id="cylinderDark" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0d111a"/>
+      <stop offset="40%" stop-color="#222a3a"/>
+      <stop offset="100%" stop-color="#090c12"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="340" rx="22" fill="url(#bgDark2)"/>
+  <polygon points="35,300 105,220 155,300" fill="#211d1f"/>
+  <polygon points="255,300 315,215 370,300" fill="#1e1a1c"/>
+  <rect x="168" y="48" width="64" height="54" rx="5" fill="#121419" stroke="#3c424f" stroke-width="1.5"/>
+  <rect x="142" y="102" width="116" height="178" rx="18" fill="url(#cylinderDark)" stroke="#454e61" stroke-width="1.8"/>
+  <text x="200" y="176" text-anchor="middle" fill="#e9edf4" font-family="Georgia, serif" font-size="15" letter-spacing="3">SAUVAGE</text>
+  <text x="200" y="198" text-anchor="middle" fill="#b79f8b" font-family="Georgia, serif" font-size="11" letter-spacing="2">ELIXIR</text>
+  <text x="200" y="252" text-anchor="middle" fill="#c7cedb" font-family="Georgia, serif" font-size="12" letter-spacing="2">Dior</text>
+</svg>

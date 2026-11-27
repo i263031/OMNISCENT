@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Omniscent Perfume Emblem">
+  <defs>
+    <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D9918F"/>
+      <stop offset="55%" stop-color="#C87D7B"/>
+      <stop offset="100%" stop-color="#8C4343"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="36" r="18" fill="none" stroke="url(#roseGrad)" stroke-width="2.5"/>
+  <path d="M26 14h12v5H26z" fill="url(#roseGrad)" rx="2"/>
+  <path d="M29 19h6v4h-6z" fill="#8C4343"/>
+  <path d="M20 35c2-6 8-10 14-8 4 1 6 5 4 9-2 3-7 3-8 7 4 0 8-2 11-6" fill="none" stroke="url(#roseGrad)" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M36 10c4-4 10-4 12 0-4 2-8 2-12 0z" fill="#D9918F" opacity="0.8"/>
+  <circle cx="44" cy="49" r="3.5" fill="#C87D7B"/>
+</svg>

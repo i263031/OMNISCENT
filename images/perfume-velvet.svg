@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Omniscent Velvet Rose Extrait bottle">
+  <defs>
+    <radialGradient id="bgRoseGold" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#3c2627"/>
+      <stop offset="100%" stop-color="#191112"/>
+    </radialGradient>
+    <linearGradient id="roseBottle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ebb4b0"/>
+      <stop offset="55%" stop-color="#c87d7b"/>
+      <stop offset="100%" stop-color="#7c3c3e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="340" rx="22" fill="url(#bgRoseGold)"/>
+  <path d="M120 260 Q200 180 280 260" fill="none" stroke="#d9918f" stroke-opacity="0.3" stroke-width="18"/>
+  <rect x="172" y="54" width="56" height="38" rx="6" fill="#d7a79f"/>
+  <rect x="140" y="98" width="120" height="176" rx="16" fill="url(#roseBottle)" stroke="#f6d8d4" stroke-opacity="0.55" stroke-width="2"/>
+  <text x="200" y="178" text-anchor="middle" fill="#fff7f5" font-family="Georgia, serif" font-size="14" letter-spacing="3">OMNISCENT</text>
+  <text x="200" y="202" text-anchor="middle" fill="#fbe8e6" font-family="Georgia, serif" font-style="italic" font-size="13">Velvet Rose</text>
+</svg>
