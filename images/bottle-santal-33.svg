@@ -1,0 +1,22 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" role="img" aria-label="SANTAL 33 bottle">
+  <defs>
+    <linearGradient id="liq" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e6d6bc" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#bda682" stop-opacity="0.96"/>
+    </linearGradient>
+    <radialGradient id="shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3c231e" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#3c231e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="140" cy="256" rx="78" ry="12" fill="url(#shadow)"/>
+  <rect x="114" y="32" width="52" height="38" rx="8" fill="#c7bdb2" stroke="#645755" stroke-width="1.4"/>
+  <rect x="126" y="70" width="28" height="20" fill="#d8c7bf" stroke="#7a635e" stroke-width="1.3"/>
+  <rect x="76" y="86" width="128" height="162" rx="20" fill="url(#liq)" stroke="#6e5a56" stroke-width="1.8"/>
+  <rect x="90" y="102" width="14" height="132" rx="7" fill="#ffffff" fill-opacity="0.24"/>
+  <rect x="88" y="130" width="104" height="78" rx="6" fill="#faf4f0" stroke="#d8c7bf" stroke-width="1.2"/>
+  <text x="140" y="149" text-anchor="middle" font-family="Georgia, serif" font-size="7.2" letter-spacing="1.6" fill="#c77a73">LE LABO</text>
+  <line x1="108" y1="156" x2="172" y2="156" stroke="#d8c7bf" stroke-width="0.9"/>
+  <text x="140" y="173" text-anchor="middle" font-family="Georgia, serif" font-size="8.6" font-weight="bold" fill="#1d1516">SANTAL 33</text>
+  <text x="140" y="191" text-anchor="middle" font-family="Arial, sans-serif" font-size="6.8" letter-spacing="1.1" fill="#645755">WOODY SPICY</text>
+</svg>

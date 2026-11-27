@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Omniscent Crest">
+  <circle cx="60" cy="60" r="54" fill="#FAF4F0" stroke="#C77A73" stroke-width="2.5"/>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#D8C7BF" stroke-width="1"/>
+  <path d="M60 22 C66 36, 78 44, 78 58 C78 70, 70 78, 60 78 C50 78, 42 70, 42 58 C42 44, 54 36, 60 22 Z" fill="none" stroke="#C77A73" stroke-width="2.2"/>
+  <rect x="52" y="82" width="16" height="12" rx="2" fill="#1D1516"/>
+  <circle cx="60" cy="57" r="7" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.5"/>
+</svg>
