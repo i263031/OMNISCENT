@@ -104,10 +104,10 @@
     { id: 'OMN-10331', date: '2026-09-21', status: 'Delivered', items: [{ id: 'bleu', n: 'Bleu de Chanel', q: 1, p: 24999 }] },
     { id: 'OMN-10208', date: '2026-07-05', status: 'Cancelled', items: [{ id: 'oud', n: 'Oud Wood', q: 1, p: 38999 }] }
   ];
-  var profile = Omni.get(K.prof, { first: 'Ayesha', last: 'Khan', email: 'ayesha.khan@example.com', phone: '+92 300 0000000' });
+  var profile = Omni.get(K.prof, { first: 'Guest', last: '', email: 'guest@gmail.com', phone: '0300-0000000' });
   var addrs = Omni.get(K.addr, [
-    { id: 1, label: 'Home', name: 'Ayesha Khan', phone: '+92 300 0000000', line: 'House 14, Street 6, F-7/2', city: 'Islamabad', def: true },
-    { id: 2, label: 'Work', name: 'Ayesha Khan', phone: '+92 300 0000000', line: 'Office 3, Blue Area', city: 'Islamabad', def: false }
+    { id: 1, label: 'Home', name: 'Guest', phone: '+92 300 0000000', line: 'House No. 00, Street X, X-0/1', city: 'Islamabad', def: true },
+    { id: 2, label: 'Work', name: 'Guest', phone: '+92 300 0000000', line: 'Office 1, Area ', city: 'Islamabad', def: false }
   ]);
   var STATUSES = ['All', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
   var filter = 'All';
