@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout &mdash; OMNISCENT</title>
+    
+    <!-- Meta tags for SEO & Theme -->
+    <meta name="description" content="Complete your luxury fragrance order at Omniscent. Enter shipping details, select Cash on Delivery or Online Payment, apply a voucher, and confirm your order.">
+    <meta name="theme-color" content="#F6ECE5">
+
+    <!-- Google Fonts Preconnect & Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="checkout-page">
+
+    <!-- =======================================================================
+         1. SITE HEADER / NAVIGATION BAR
+         ======================================================================= -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+            
+            <!-- Brand Logo & Name -->
+            <a href="index.html" class="brand-logo" aria-label="Omniscent Homepage">
+                <img src="images/logo.png" alt="Omniscent Emblem" class="brand-icon">
+                <span class="brand-name">OMNISCENT</span>
+            </a>
+
+            <!-- Central Navigation -->
+            <nav class="nav-center" aria-label="Main Navigation">
+                <a href="shop.html" class="nav-pill">
+                    <span>Shop All</span>
+                    <span class="dropdown-arrow">&#9662;</span>
+                </a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="shop.html?search=Men" class="nav-link">Men</a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="shop.html?search=Women" class="nav-link">Women</a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="shop.html?search=Unisex" class="nav-link">Unisex</a>
+            </nav>
+
+            <!-- Right Actions (Search & Shopping Bag with Counter) -->
+            <div class="nav-right">
+                <span class="nav-divider-light" aria-hidden="true">|</span>
+
+                <!-- Search Button -->
+                <button class="nav-action-btn search-btn" id="searchBtn" aria-label="Search Fragrances">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+
+                <!-- Shopping Bag / Cart Button -->
+                <a href="checkout.html" class="nav-action-btn cart-btn" id="cartBtn" aria-label="Shopping Bag & Checkout">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <!-- Mobile Menu Hamburger Toggle -->
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
+            <a href="index.html" class="mobile-nav-link">&larr; Back to Home</a>
+            <a href="shop.html" class="mobile-nav-link">Shop All</a>
+            <a href="checkout.html" class="mobile-nav-link active">Checkout</a>
+        </div>
+    </header>
+
+
+    <!-- =======================================================================
+         2. MAIN CHECKOUT FLOW
+         ======================================================================= -->
+    <main class="checkout-main">
+
+        <!-- Checkout Hero & Stepper Header -->
+        <section class="checkout-hero-section">
+            <div class="container">
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">&larr; Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <a href="shop.html" class="breadcrumb-link">Shop All</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current">Checkout</span>
+                </nav>
+
+                <div class="checkout-hero-content">
+                    <div class="section-tagline-wrap">
+                        <span class="tagline-line" aria-hidden="true"></span>
+                        <span class="section-tagline">BESPOKE ORDER CONCIERGE</span>
+                        <span class="tagline-line" aria-hidden="true"></span>
+                    </div>
+
+                    <h1 class="checkout-hero-title">
+                        Private <span class="accent-italic">Checkout</span>
+                    </h1>
+                    <p class="checkout-hero-subtitle">
+                        Review your curated scents, provide your delivery address, choose your preferred payment method, and confirm your parcel.
+                    </p>
+                </div>
+
+                <!-- 4-Step Checkout Flow Stepper -->
+                <ol class="checkout-stepper" id="checkoutStepper" aria-label="Checkout Progress">
+                    <li class="stepper-item active" data-step="1">
+                        <button type="button" class="stepper-btn" data-step-target="1">
+                            <span class="stepper-num">01</span>
+                            <span class="stepper-label">Shipping &amp; Info</span>
+                        </button>
+                    </li>
+                    <li class="stepper-connector" aria-hidden="true"></li>
+                    <li class="stepper-item" data-step="2">
+                        <button type="button" class="stepper-btn" data-step-target="2">
+                            <span class="stepper-num">02</span>
+                            <span class="stepper-label">Payment &amp; Voucher</span>
+                        </button>
+                    </li>
+                    <li class="stepper-connector" aria-hidden="true"></li>
+                    <li class="stepper-item" data-step="3">
+                        <button type="button" class="stepper-btn" data-step-target="3">
+                            <span class="stepper-num">03</span>
+                            <span class="stepper-label">Confirm Order</span>
+                        </button>
+                    </li>
+                    <li class="stepper-connector" aria-hidden="true"></li>
+                    <li class="stepper-item" data-step="4">
+                        <div class="stepper-btn stepper-static">
+                            <span class="stepper-num">04</span>
+                            <span class="stepper-label">Thank You</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Checkout Workspace Section -->
+        <section class="checkout-workspace-section">
+            <div class="container">
+
+                <!-- 2-Column Checkout Layout (Steps 1 - 3) -->
+                <div class="checkout-layout" id="checkoutWorkspace">
+
+                    <!-- LEFT COLUMN: MULTI-STEP CHECKOUT FORM -->
+                    <div class="checkout-flow-col">
+
+                        <!-- ===================================================
+                             STEP 1: USER INFORMATION & SHIPPING ADDRESS
+                             =================================================== -->
+                        <section class="checkout-card checkout-step-panel active" id="stepShipping" data-step="1" aria-labelledby="stepShippingTitle">
+                            <div class="checkout-card-header">
+                                <span class="step-kicker">Step 01 of 03</span>
+                                <h2 class="checkout-card-title" id="stepShippingTitle">Recipient Information &amp; Shipping Address</h2>
+                            </div>
+
+                            <form id="shippingForm" class="checkout-form" novalidate>
+                                <!-- Contact / User Information -->
+                                <div class="form-subsection">
+                                    <h3 class="subsection-title">Contact Information</h3>
+                                    <div class="form-grid-2">
+                                        <div class="form-group">
+                                            <label for="fullName" class="form-label">Full Name <span class="req">*</span></label>
+                                            <input type="text" id="fullName" name="fullName" class="form-input" placeholder="e.g., Ayesha Khan" required autocomplete="name">
+                                            <span class="field-error" id="err-fullName"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phoneNumber" class="form-label">Phone Number <span class="req">*</span></label>
+                                            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-input" placeholder="+92 300 1234567" required autocomplete="tel">
+                                            <span class="field-error" id="err-phoneNumber"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="emailAddress" class="form-label">Email Address (for order confirmation) <span class="req">*</span></label>
+                                        <input type="email" id="emailAddress" name="emailAddress" class="form-input" placeholder="ayesha@example.com" required autocomplete="email">
+                                        <span class="field-error" id="err-emailAddress"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Shipping Address -->
+                                <div class="form-subsection">
+                                    <h3 class="subsection-title">Shipping Address</h3>
+                                    <div class="form-group">
+                                        <label for="streetAddress" class="form-label">Street Address / House &amp; Sector <span class="req">*</span></label>
+                                        <input type="text" id="streetAddress" name="streetAddress" class="form-input" placeholder="House 14-B, Street 7, F-7/2" required autocomplete="street-address">
+                                        <span class="field-error" id="err-streetAddress"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="apartment" class="form-label">Apartment, Suite, or Nearby Landmark <span class="opt">(Optional)</span></label>
+                                        <input type="text" id="apartment" name="apartment" class="form-input" placeholder="Suite 4, Near Kohsar Market" autocomplete="address-line2">
+                                    </div>
+
+                                    <div class="form-grid-3">
+                                        <div class="form-group">
+                                            <label for="city" class="form-label">City <span class="req">*</span></label>
+                                            <input type="text" id="city" name="city" class="form-input" placeholder="Islamabad" list="pakistanCities" required autocomplete="address-level2">
+                                            <datalist id="pakistanCities">
+                                                <option value="Islamabad">
+                                                <option value="Lahore">
+                                                <option value="Karachi">
+                                                <option value="Rawalpindi">
+                                                <option value="Faisalabad">
+                                                <option value="Multan">
+                                                <option value="Peshawar">
+                                            </datalist>
+                                            <span class="field-error" id="err-city"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="province" class="form-label">Province / Region <span class="req">*</span></label>
+                                            <select id="province" name="province" class="form-input form-select" required>
+                                                <option value="Islamabad Capital Territory">Islamabad (ICT)</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Sindh">Sindh</option>
+                                                <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
+                                                <option value="Balochistan">Balochistan</option>
+                                                <option value="Gilgit-Baltistan">Gilgit-Baltistan</option>
+                                                <option value="Azad Kashmir">Azad Kashmir</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="postalCode" class="form-label">Postal Code <span class="req">*</span></label>
+                                            <input type="text" id="postalCode" name="postalCode" class="form-input" placeholder="44000" required autocomplete="postal-code">
+                                            <span class="field-error" id="err-postalCode"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Delivery Method -->
+                                <div class="form-subsection">
+                                    <h3 class="subsection-title">Delivery Service</h3>
+                                    <div class="delivery-options-grid">
+                                        <label class="option-card active" data-delivery="standard">
+                                            <input type="radio" name="deliveryTier" value="standard" checked>
+                                            <div class="option-card-body">
+                                                <div class="option-card-top">
+                                                    <span class="option-title">Standard Boutique Courier</span>
+                                                    <span class="option-price" id="standardShippingTag">Free</span>
+                                                </div>
+                                                <span class="option-desc">Insured delivery in 3&ndash;5 business days (Complimentary over Rs. 20,000)</span>
+                                            </div>
+                                        </label>
+                                        <label class="option-card" data-delivery="express">
+                                            <input type="radio" name="deliveryTier" value="express">
+                                            <div class="option-card-body">
+                                                <div class="option-card-top">
+                                                    <span class="option-title">Express Priority Dispatch</span>
+                                                    <span class="option-price" id="expressShippingTag">Rs. 950</span>
+                                                </div>
+                                                <span class="option-desc">White-glove priority courier in 1&ndash;2 business days</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Complimentary Gift Note -->
+                                <div class="form-subsection">
+                                    <div class="form-group">
+                                        <label for="giftNote" class="form-label">Complimentary Gift Card Message / Delivery Instructions <span class="opt">(Optional)</span></label>
+                                        <textarea id="giftNote" name="giftNote" class="form-input form-textarea" rows="2" placeholder="Add a personal handwritten note for our gift box or instructions for the courier..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="checkout-step-actions end">
+                                    <button type="submit" class="btn-primary checkout-next-btn" id="toPaymentBtn">
+                                        <span>Continue to Payment</span>
+                                        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </section>
+
+
+                        <!-- ===================================================
+                             STEP 2: PAYMENT METHOD & VOUCHER
+                             =================================================== -->
+                        <section class="checkout-card checkout-step-panel" id="stepPayment" data-step="2" aria-labelledby="stepPaymentTitle">
+                            <div class="checkout-card-header">
+                                <span class="step-kicker">Step 02 of 03</span>
+                                <h2 class="checkout-card-title" id="stepPaymentTitle">Payment Method &amp; Voucher</h2>
+                            </div>
+
+                            <!-- Voucher / Promo Code Module -->
+                            <div class="voucher-box">
+                                <div class="voucher-box-header">
+                                    <div>
+                                        <h3 class="subsection-title">Have a Luxury Voucher?</h3>
+                                        <p class="voucher-sub">Apply a promotional code to enjoy exclusive savings on your order.</p>
+                                    </div>
+                                </div>
+
+                                <div class="voucher-input-row">
+                                    <input type="text" id="voucherInput" class="form-input voucher-field" placeholder="Enter voucher code (e.g. OMNI10)" autocomplete="off">
+                                    <button type="button" class="btn-voucher-apply" id="applyVoucherBtn">Apply Voucher</button>
+                                </div>
+                                <div class="voucher-feedback" id="voucherFeedback" role="status" aria-live="polite"></div>
+
+                                <div class="voucher-hints">
+                                    <span class="hint-label">Available codes:</span>
+                                    <button type="button" class="voucher-chip" data-code="OMNI10"><code>OMNI10</code> (10% Off)</button>
+                                    <button type="button" class="voucher-chip" data-code="ROSE2000"><code>ROSE2000</code> (Rs. 2,000 Off)</button>
+                                    <button type="button" class="voucher-chip" data-code="FREESHIP"><code>FREESHIP</code> (Free Express)</button>
+                                </div>
+                            </div>
+
+                            <!-- Payment Method Selection -->
+                            <form id="paymentForm" class="checkout-form" novalidate>
+                                <div class="form-subsection">
+                                    <h3 class="subsection-title">Select Payment Method</h3>
+
+                                    <div class="payment-methods-list">
+                                        <!-- Option 1: Cash on Delivery -->
+                                        <label class="payment-option-card active" data-payment="cod">
+                                            <div class="payment-option-header">
+                                                <input type="radio" name="paymentMethod" value="cod" checked>
+                                                <div class="payment-icon-badge" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                                                        <circle cx="12" cy="12" r="2.5"></circle>
+                                                        <path d="M6 12h.01M18 12h.01"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="payment-title-wrap">
+                                                    <span class="option-title">Cash on Delivery (COD)</span>
+                                                    <span class="option-desc">Pay in cash directly to our courier upon parcel inspection &amp; delivery.</span>
+                                                </div>
+                                                <span class="payment-pill-tag">Popular</span>
+                                            </div>
+                                            <div class="payment-option-details" id="codDetailsPanel">
+                                                <p class="payment-note">
+                                                    <strong>Signature Doorstep Service:</strong> Sealed luxury packaging with complimentary scent tester card. Please keep exact change ready if possible.
+                                                </p>
+                                            </div>
+                                        </label>
+
+                                        <!-- Option 2: Online Payment -->
+                                        <label class="payment-option-card" data-payment="online">
+                                            <div class="payment-option-header">
+                                                <input type="radio" name="paymentMethod" value="online">
+                                                <div class="payment-icon-badge" aria-hidden="true">
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                                        <line x1="1" y1="10" x2="23" y2="10"></line>
+                                                    </svg>
+                                                </div>
+                                                <div class="payment-title-wrap">
+                                                    <span class="option-title">Online Payment</span>
+                                                    <span class="option-desc">Pay securely via Credit / Debit Card, JazzCash, EasyPaisa, or RAAST.</span>
+                                                </div>
+                                                <span class="payment-pill-tag instant">Instant</span>
+                                            </div>
+
+                                            <!-- Online Payment Sub-Options (Shown when Online Payment is selected) -->
+                                            <div class="payment-option-details online-panel" id="onlinePaymentPanel" style="display: none;">
+                                                <div class="online-subtabs" role="tablist" aria-label="Online payment channels">
+                                                    <button type="button" class="online-subtab active" data-channel="card" role="tab" aria-selected="true">Credit / Debit Card</button>
+                                                    <button type="button" class="online-subtab" data-channel="wallet" role="tab" aria-selected="false">Digital Wallet / RAAST</button>
+                                                </div>
+
+                                                <!-- Card Payment Fields -->
+                                                <div class="online-channel-body active" id="channelCard">
+                                                    <div class="form-group">
+                                                        <label for="cardName" class="form-label">Name on Card <span class="req">*</span></label>
+                                                        <input type="text" id="cardName" class="form-input" placeholder="AYESHA KHAN" autocomplete="cc-name">
+                                                        <span class="field-error" id="err-cardName"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="cardNumber" class="form-label">Card Number <span class="req">*</span></label>
+                                                        <input type="text" id="cardNumber" class="form-input" placeholder="4242 4242 4242 4242" maxlength="19" inputmode="numeric" autocomplete="cc-number">
+                                                        <span class="field-error" id="err-cardNumber"></span>
+                                                    </div>
+                                                    <div class="form-grid-2">
+                                                        <div class="form-group">
+                                                            <label for="cardExpiry" class="form-label">Expiry Date (MM/YY) <span class="req">*</span></label>
+                                                            <input type="text" id="cardExpiry" class="form-input" placeholder="08/28" maxlength="5" inputmode="numeric" autocomplete="cc-exp">
+                                                            <span class="field-error" id="err-cardExpiry"></span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="cardCvv" class="form-label">CVV / Security Code <span class="req">*</span></label>
+                                                            <input type="password" id="cardCvv" class="form-input" placeholder="&bull;&bull;&bull;" maxlength="4" inputmode="numeric" autocomplete="cc-csc">
+                                                            <span class="field-error" id="err-cardCvv"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Digital Wallet Fields -->
+                                                <div class="online-channel-body" id="channelWallet" style="display: none;">
+                                                    <div class="form-grid-2">
+                                                        <div class="form-group">
+                                                            <label for="walletProvider" class="form-label">Wallet / Transfer Service <span class="req">*</span></label>
+                                                            <select id="walletProvider" class="form-input form-select">
+                                                                <option value="JazzCash">JazzCash Mobile Account</option>
+                                                                <option value="EasyPaisa">EasyPaisa Wallet</option>
+                                                                <option value="RAAST / IBFT">RAAST / Online Bank Transfer</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="walletNumber" class="form-label">Mobile / Account IBAN <span class="req">*</span></label>
+                                                            <input type="text" id="walletNumber" class="form-input" placeholder="0300 1234567">
+                                                            <span class="field-error" id="err-walletNumber"></span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="payment-note">
+                                                        You will receive an instant digital receipt upon order confirmation.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="checkout-step-actions">
+                                    <button type="button" class="btn-secondary checkout-back-btn" id="backToShippingBtn">
+                                        <span class="btn-arrow" aria-hidden="true">&larr;</span>
+                                        <span>Back to Shipping</span>
+                                    </button>
+                                    <button type="submit" class="btn-primary checkout-next-btn" id="toConfirmBtn">
+                                        <span>Review Order</span>
+                                        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </section>
+
+
+                        <!-- ===================================================
+                             STEP 3: ORDER CONFIRMATION REVIEW
+                             =================================================== -->
+                        <section class="checkout-card checkout-step-panel" id="stepConfirm" data-step="3" aria-labelledby="stepConfirmTitle">
+                            <div class="checkout-card-header">
+                                <span class="step-kicker">Step 03 of 03</span>
+                                <h2 class="checkout-card-title" id="stepConfirmTitle">Review &amp; Confirm Your Order</h2>
+                            </div>
+
+                            <div class="review-blocks-grid">
+                                <!-- Shipping Review -->
+                                <div class="review-block">
+                                    <div class="review-block-head">
+                                        <h3 class="review-block-title">Recipient &amp; Shipping</h3>
+                                        <button type="button" class="btn-edit-step" data-goto-step="1">Edit</button>
+                                    </div>
+                                    <p class="review-line-strong" id="reviewContact"></p>
+                                    <p class="review-line" id="reviewAddress"></p>
+                                    <p class="review-line-muted" id="reviewDelivery"></p>
+                                    <p class="review-gift-note" id="reviewGiftNote" style="display:none;"></p>
+                                </div>
+
+                                <!-- Payment Review -->
+                                <div class="review-block">
+                                    <div class="review-block-head">
+                                        <h3 class="review-block-title">Payment &amp; Voucher</h3>
+                                        <button type="button" class="btn-edit-step" data-goto-step="2">Edit</button>
+                                    </div>
+                                    <p class="review-line-strong" id="reviewPayment"></p>
+                                    <p class="review-line" id="reviewPaymentSub"></p>
+                                    <p class="review-line-accent" id="reviewVoucher"></p>
+                                </div>
+                            </div>
+
+                            <!-- Items Review -->
+                            <div class="review-items-section">
+                                <h3 class="subsection-title">Selected Fragrances</h3>
+                                <div class="review-items-list" id="reviewItemsList"></div>
+                            </div>
+
+                            <!-- Confirmation Terms Checkbox -->
+                            <label class="confirm-checkbox-wrap">
+                                <input type="checkbox" id="confirmTerms" checked>
+                                <span>I confirm that my shipping address and payment selection are accurate and would like to place this Omniscent order.</span>
+                            </label>
+                            <span class="field-error" id="err-confirmTerms"></span>
+
+                            <div class="checkout-step-actions">
+                                <button type="button" class="btn-secondary checkout-back-btn" id="backToPaymentBtn">
+                                    <span class="btn-arrow" aria-hidden="true">&larr;</span>
+                                    <span>Back to Payment</span>
+                                </button>
+                                <button type="button" class="btn-primary btn-confirm-order" id="confirmOrderBtn">
+                                    <span>Confirm Order</span>
+                                    <span class="btn-arrow" aria-hidden="true">&#10003;</span>
+                                </button>
+                            </div>
+                        </section>
+
+                    </div>
+
+
+                    <!-- RIGHT COLUMN: PERSISTENT ORDER SUMMARY SIDEBAR -->
+                    <aside class="checkout-summary-col" aria-label="Order Summary">
+                        <div class="order-summary-card">
+                            <div class="summary-header">
+                                <h2 class="summary-title">Order Summary</h2>
+                                <span class="summary-badge" id="summaryItemBadge">0 Items</span>
+                            </div>
+
+                            <div class="preview-bag-notice" id="previewBagNotice" style="display: none;">
+                                <span>Curated sample bag loaded for checkout preview.</span>
+                                <a href="shop.html">Add from Shop</a>
+                            </div>
+
+                            <!-- Bag Items List -->
+                            <div class="summary-items-list" id="summaryItemsList"></div>
+
+                            <!-- Empty Bag State inside Sidebar -->
+                            <div class="summary-empty-state" id="summaryEmptyState" style="display: none;">
+                                <p>Your fragrance bag is currently empty.</p>
+                                <div class="summary-empty-actions">
+                                    <a href="shop.html" class="btn-secondary">Browse Collection</a>
+                                    <button type="button" class="btn-restore-bag" id="restoreSampleBagBtn">Load Sample Bag</button>
+                                </div>
+                            </div>
+
+                            <!-- Active Voucher Pill in Summary -->
+                            <div class="summary-voucher-row" id="summaryVoucherRow" style="display: none;">
+                                <span class="voucher-tag">
+                                    Voucher: <strong id="summaryVoucherCode">OMNI10</strong>
+                                    <button type="button" class="btn-remove-voucher" id="removeVoucherBtn" aria-label="Remove voucher">&times;</button>
+                                </span>
+                                <span class="voucher-saved" id="summaryVoucherSaved">-Rs. 0</span>
+                            </div>
+
+                            <!-- Totals Breakdown -->
+                            <div class="summary-totals">
+                                <div class="summary-row">
+                                    <span>Subtotal</span>
+                                    <strong id="summarySubtotal">Rs. 0</strong>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Shipping &amp; Gift Wrap</span>
+                                    <strong id="summaryShipping">Free</strong>
+                                </div>
+                                <div class="summary-row discount-row" id="summaryDiscountRow" style="display: none;">
+                                    <span>Voucher Discount</span>
+                                    <strong id="summaryDiscount">-Rs. 0</strong>
+                                </div>
+                                <div class="summary-divider"></div>
+                                <div class="summary-row grand-total">
+                                    <span>Total</span>
+                                    <strong id="summaryTotal">Rs. 0</strong>
+                                </div>
+                            </div>
+
+                            <!-- Luxury Perks -->
+                            <div class="modal-perks summary-perks">
+                                <div class="perk-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Complimentary Signature Gift Box &amp; Ribbon</span>
+                                </div>
+                                <div class="perk-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>100% Authentic Luxury Perfumery</span>
+                                </div>
+                                <div class="perk-item">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                    <span>Insured Express Nationwide Delivery</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                </div>
+
+
+                <!-- ===========================================================
+                     STEP 4: ORDER CONFIRMED / THANK YOU MESSAGE
+                     =========================================================== -->
+                <section class="thankyou-card" id="stepThankYou" style="display: none;" aria-live="polite" aria-labelledby="thankYouHeading">
+                    <div class="thankyou-seal" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+
+                    <div class="section-tagline-wrap thankyou-tagline">
+                        <span class="tagline-line" aria-hidden="true"></span>
+                        <span class="section-tagline">ORDER CONFIRMED</span>
+                        <span class="tagline-line" aria-hidden="true"></span>
+                    </div>
+
+                    <h2 class="thankyou-title" id="thankYouHeading">
+                        <span class="accent-italic">Thank You</span> for Your Order, <span id="tyCustomerName">Valued Guest</span>
+                    </h2>
+
+                    <p class="thankyou-message">
+                        Your Omniscent order has been confirmed! Our perfumery concierge at Centaurus Mall, Islamabad is carefully preparing and gift-wrapping your fragrances. A confirmation receipt has been noted for <strong id="tyCustomerEmail"></strong>.
+                    </p>
+
+                    <!-- Order Confirmation Metadata -->
+                    <div class="thankyou-meta-grid">
+                        <div class="ty-meta-box">
+                            <span class="ty-meta-label">Order Reference</span>
+                            <strong class="ty-meta-val" id="tyOrderNumber">#OMN-2026-0000</strong>
+                        </div>
+                        <div class="ty-meta-box">
+                            <span class="ty-meta-label">Order Date</span>
+                            <strong class="ty-meta-val" id="tyOrderDate">-</strong>
+                        </div>
+                        <div class="ty-meta-box">
+                            <span class="ty-meta-label">Estimated Delivery</span>
+                            <strong class="ty-meta-val" id="tyEstDelivery">3&ndash;5 Business Days</strong>
+                        </div>
+                        <div class="ty-meta-box">
+                            <span class="ty-meta-label">Payment Method</span>
+                            <strong class="ty-meta-val" id="tyPaymentMethod">Cash on Delivery</strong>
+                        </div>
+                    </div>
+
+                    <!-- Receipt Details -->
+                    <div class="thankyou-receipt-grid">
+                        <div class="ty-receipt-col">
+                            <h3 class="review-block-title">Delivering To</h3>
+                            <p class="review-line-strong" id="tyRecipientName"></p>
+                            <p class="review-line" id="tyShippingAddress"></p>
+                            <p class="review-line-muted" id="tyRecipientPhone"></p>
+                            <p class="review-gift-note" id="tyGiftNote" style="display: none;"></p>
+                        </div>
+
+                        <div class="ty-receipt-col">
+                            <h3 class="review-block-title">Order Receipt</h3>
+                            <div class="ty-items-list" id="tyItemsList"></div>
+                            <div class="ty-totals">
+                                <div class="summary-row"><span>Subtotal</span><strong id="tySubtotal">Rs. 0</strong></div>
+                                <div class="summary-row"><span>Shipping</span><strong id="tyShipping">Free</strong></div>
+                                <div class="summary-row discount-row" id="tyDiscountRow" style="display:none;">
+                                    <span>Voucher (<span id="tyVoucherCode"></span>)</span>
+                                    <strong id="tyDiscount">-Rs. 0</strong>
+                                </div>
+                                <div class="summary-divider"></div>
+                                <div class="summary-row grand-total">
+                                    <span id="tyTotalLabel">Total Due</span>
+                                    <strong id="tyTotal">Rs. 0</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="thankyou-actions">
+                        <button type="button" class="btn-secondary" id="printOrderBtn">Print Receipt</button>
+                        <a href="shop.html" class="btn-primary">
+                            <span>Continue Shopping</span>
+                            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                        </a>
+                        <a href="index.html" class="btn-text-link">Return to Homepage</a>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =======================================================================
+         3. SITE FOOTER
+         ======================================================================= -->
+    <footer class="site-footer">
+        <div class="container">
+            
+            <div class="footer-top">
+                <!-- Logo & Brand -->
+                <a href="index.html" class="brand-logo" aria-label="Omniscent Homepage">
+                    <img src="images/logo.png" alt="Omniscent Emblem" class="brand-icon">
+                    <span class="brand-name">OMNISCENT</span>
+                </a>
+
+                <!-- Footer Navigation -->
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                    <a href="index.html" class="footer-link">Home</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="shop.html" class="footer-link">Shop All</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="checkout.html" class="footer-link active">Checkout</a>
+                </nav>
+
+                <!-- Social Media Channels -->
+                <div class="footer-socials-group">
+                    <span class="footer-social-vdivider" aria-hidden="true"></span>
+                    <div class="social-icons-wrap">
+                        <a href="https://instagram.com" class="social-icon-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://tiktok.com" class="social-icon-link" aria-label="TikTok" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </a>
+                        <a href="https://facebook.com" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://youtube.com" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-line">
+                    <span class="footer-line" aria-hidden="true"></span>
+                    <p class="copyright-text">&copy; 2025 Omniscent. All rights reserved.</p>
+                    <span class="footer-line" aria-hidden="true"></span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- =======================================================================
+         4. LUXURY SEARCH MODAL OVERLAY
+         ======================================================================= -->
+    <div class="search-modal" id="searchModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="searchModalTitle">
+        <div class="search-modal-backdrop" id="searchBackdrop"></div>
+        <div class="search-modal-box">
+            <div class="search-box-header">
+                <h3 class="search-modal-title" id="searchModalTitle">Search Fragrances</h3>
+                <button class="search-close-btn" id="searchCloseBtn" aria-label="Close Search Overlay">&times;</button>
+            </div>
+            <div class="search-input-wrap">
+                <svg class="search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="search-field" id="searchField" placeholder="Search by name, scent family, or brand..." autocomplete="off">
+            </div>
+            <div class="search-quick-tags">
+                <span class="quick-label">Trending Notes:</span>
+                <button class="quick-tag" data-query="Rose">Rose</button>
+                <button class="quick-tag" data-query="Woody">Woody</button>
+                <button class="quick-tag" data-query="Amber">Amber</button>
+                <button class="quick-tag" data-query="Floral">Floral</button>
+                <button class="quick-tag" data-query="Citrus">Citrus</button>
+                <button class="quick-tag" data-query="Vanilla">Vanilla</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =======================================================================
+         5. SCRIPTS
+         ======================================================================= -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>

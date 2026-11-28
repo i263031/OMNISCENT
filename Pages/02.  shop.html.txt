@@ -1,0 +1,847 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All Fragrances &mdash; OMNISCENT</title>
+    
+    <!-- Meta tags for SEO & Theme -->
+    <meta name="description" content="Explore Omniscent's complete luxury fragrance collection. Curated perfumes across Floral, Woody, Amber, and Fresh notes.">
+    <meta name="theme-color" content="#F6ECE5">
+
+    <!-- Google Fonts Preconnect & Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="shop-page">
+
+    <!-- =======================================================================
+         1. SITE HEADER / NAVIGATION BAR
+         ======================================================================= -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+            
+            <!-- Brand Logo & Name (Links back to Homepage) -->
+            <a href="01.  homepage.html" class="brand-logo" aria-label="Omniscent Homepage">
+                <img src="../images/logo.png" alt="Omniscent Emblem" class="brand-icon">
+                <span class="brand-name">OMNISCENT</span>
+            </a>
+
+            <!-- Central Navigation -->
+            <nav class="nav-center" aria-label="Main Navigation">
+                <a href="02.  shop.html" class="nav-pill active">
+                    <span>Shop All</span>
+                    <span class="dropdown-arrow">&#9662;</span>
+                </a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="#men" class="nav-link">Men</a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="#women" class="nav-link">Women</a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="#unisex" class="nav-link">Unisex</a>
+            </nav>
+
+            <!-- Right Actions (Search & Shopping Bag with Counter) -->
+            <div class="nav-right">
+                <span class="nav-divider-light" aria-hidden="true">|</span>
+
+                <!-- Search Button -->
+                <button class="nav-action-btn search-btn" id="searchBtn" aria-label="Search Fragrances">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+
+                <!-- Shopping Bag / Cart Button -->
+                <a href="12.  checkout-flow.html" class="nav-action-btn cart-btn" id="cartBtn" aria-label="Shopping Bag">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <!-- Cart items badge counter -->
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <!-- Mobile Menu Hamburger Toggle -->
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
+            <a href="01.  homepage.html" class="mobile-nav-link">&larr; Back to Home</a>
+            <a href="02.  shop.html" class="mobile-nav-link active">Shop All</a>
+            <a href="#men" class="mobile-nav-link">Men</a>
+            <a href="#women" class="mobile-nav-link">Women</a>
+            <a href="#unisex" class="mobile-nav-link">Unisex</a>
+        </div>
+    </header>
+
+
+    <!-- =======================================================================
+         2. SHOP HERO BANNER & BREADCRUMB
+         ======================================================================= -->
+    <main>
+        
+        <section class="shop-hero-section">
+            <div class="container">
+                <!-- Breadcrumbs linking back to homepage -->
+                <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+                    <a href="01.  homepage.html" class="breadcrumb-link">&larr; Home</a>
+                    <span class="breadcrumb-separator" aria-hidden="true">/</span>
+                    <span class="breadcrumb-current">Shop All Fragrances</span>
+                </nav>
+
+                <div class="shop-hero-content">
+                    <div class="section-tagline-wrap">
+                        <span class="tagline-line" aria-hidden="true"></span>
+                        <span class="section-tagline">OUR COMPLETE CURATION</span>
+                        <span class="tagline-line" aria-hidden="true"></span>
+                    </div>
+
+                    <h1 class="shop-hero-title">
+                        All <span class="accent-italic">Fragrances</span>
+                    </h1>
+
+                    <p class="shop-hero-description">
+                        Immerse yourself in our complete universe of masterfully crafted perfumes. Select and filter through delicate florals, rare woods, seductive ambers, and invigorating citrus notes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             3. SHOP CATALOG SECTION (FILTERS, SEARCH & PRODUCT GRID)
+             =================================================================== -->
+        <section class="shop-catalog-section" id="catalog">
+            <div class="container">
+
+                <!-- Filter & Search Toolbar (Scent Families, Search & Sort) -->
+                <div class="catalog-toolbar">
+                    
+                    <!-- Scent Family Chips -->
+                    <div class="scent-chips-wrap" role="group" aria-label="Filter by scent profile">
+                        <span class="filter-label">Scent Notes:</span>
+                        <button class="scent-chip active" data-family="all">All Notes</button>
+                        <button class="scent-chip" data-family="floral">Floral</button>
+                        <button class="scent-chip" data-family="woody">Woody</button>
+                        <button class="scent-chip" data-family="amber">Amber</button>
+                        <button class="scent-chip" data-family="fresh">Fresh & Citrus</button>
+                        <button class="scent-chip" data-family="gourmand">Gourmand</button>
+                    </div>
+
+                    <!-- Right Controls (Search input & Sort Dropdown) -->
+                    <div class="toolbar-controls">
+                        
+                        <!-- Search Box within catalog -->
+                        <div class="catalog-search-wrap">
+                            <svg class="catalog-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <input type="text" class="catalog-search-input" id="catalogSearch" placeholder="Search perfume or brand...">
+                            <button class="clear-search-btn" id="clearSearch" aria-label="Clear search query">&times;</button>
+                        </div>
+
+                        <!-- Sort Dropdown -->
+                        <div class="catalog-sort-wrap">
+                            <label for="catalogSort" class="sort-label">Sort By:</label>
+                            <select id="catalogSort" class="catalog-sort-select">
+                                <option value="featured">Featured Collection</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="rating">Top Rated</option>
+                                <option value="name-asc">Name: A &mdash; Z</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Active Filter Tags & Count Display -->
+                <div class="catalog-status-bar">
+                    <span class="catalog-count-text" id="catalogCountDisplay">Showing <strong>16</strong> luxury fragrances</span>
+                    <button class="btn-reset-filters" id="btnResetFilters" style="display:none;">Clear All Filters</button>
+                </div>
+
+
+                <!-- ===============================================================
+                     PRODUCT CARDS GRID (16 Fragrances)
+                     =============================================================== -->
+                <div class="shop-products-grid" id="shopProductsGrid">
+
+                    <!-- Product 1: Omniscent Signature Rose -->
+                    <article class="product-card" data-id="1" data-category="unisex" data-family="floral" data-price="28000" data-name="Omniscent Signature Rose" data-rating="5.0">
+                        <div class="product-badge badge-signature">Signature</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Omniscent Signature Rose details">
+                            <img src="../images/product-signature-rose.png" alt="Omniscent Signature Rose Perfume" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Omniscent</span>
+                                <h3 class="product-name">Signature Rose</h3>
+                                <p class="product-notes">Imperial Rose &bull; Saffron &bull; Sandalwood</p>
+                                <span class="product-price">Rs. 28,000</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Omniscent Signature Rose to Cart" data-id="1" data-name="Omniscent Signature Rose">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 2: Bleu de Chanel -->
+                    <article class="product-card" data-id="2" data-category="men" data-family="woody" data-price="24999" data-name="Bleu de Chanel" data-rating="4.9">
+                        <div class="product-badge badge-bestseller">Best Seller</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Bleu de Chanel details">
+                            <img src="../images/product-bleu-chanel-hq.png" alt="Bleu de Chanel Perfume Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Chanel</span>
+                                <h3 class="product-name">Bleu de Chanel</h3>
+                                <p class="product-notes">Cedarwood &bull; Grapefruit &bull; Frankincense</p>
+                                <span class="product-price">Rs. 24,999</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Bleu de Chanel to Cart" data-id="2" data-name="Bleu de Chanel">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 3: Miss Dior -->
+                    <article class="product-card" data-id="3" data-category="women" data-family="floral" data-price="22999" data-name="Miss Dior" data-rating="4.9">
+                        <div class="product-badge badge-bestseller">Best Seller</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Miss Dior details">
+                            <img src="../images/product-miss-dior-hq.png" alt="Miss Dior Perfume Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Dior</span>
+                                <h3 class="product-name">Miss Dior</h3>
+                                <p class="product-notes">Grasse Rose &bull; Lily of the Valley &bull; Peony</p>
+                                <span class="product-price">Rs. 22,999</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Miss Dior to Cart" data-id="3" data-name="Miss Dior">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 4: Sauvage Elixir -->
+                    <article class="product-card" data-id="4" data-category="men" data-family="woody" data-price="26499" data-name="Sauvage Elixir" data-rating="4.9">
+                        <div class="product-badge badge-bestseller">Best Seller</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Sauvage Elixir details">
+                            <img src="../images/product-sauvage-hq.png" alt="Sauvage Elixir Cologne Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Dior</span>
+                                <h3 class="product-name">Sauvage Elixir</h3>
+                                <p class="product-notes">Nutmeg &bull; Cinnamon &bull; Lavender &bull; Amber</p>
+                                <span class="product-price">Rs. 26,499</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Sauvage Elixir to Cart" data-id="4" data-name="Sauvage Elixir">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 5: Si Eau de Parfum -->
+                    <article class="product-card" data-id="5" data-category="women" data-family="floral" data-price="20999" data-name="Si Eau de Parfum" data-rating="4.8">
+                        <div class="product-badge badge-bestseller">Best Seller</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Si Eau de Parfum details">
+                            <img src="../images/product-si-hq.png" alt="Si Eau de Parfum Fragrance Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Giorgio Armani</span>
+                                <h3 class="product-name">S&igrave; Eau de Parfum</h3>
+                                <p class="product-notes">Blackcurrant &bull; May Rose &bull; Warm Vanilla</p>
+                                <span class="product-price">Rs. 20,999</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Si Eau de Parfum to Cart" data-id="5" data-name="Si Eau de Parfum">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 6: Creed Aventus -->
+                    <article class="product-card" data-id="6" data-category="men" data-family="fresh" data-price="42000" data-name="Creed Aventus" data-rating="5.0">
+                        <div class="product-badge badge-luxury">Ultra Luxury</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Creed Aventus details">
+                            <img src="../images/product-creed-aventus.png" alt="Creed Aventus Cologne Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Creed</span>
+                                <h3 class="product-name">Aventus</h3>
+                                <p class="product-notes">Bergamot &bull; Blackcurrant &bull; Birch &bull; Oakmoss</p>
+                                <span class="product-price">Rs. 42,000</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Creed Aventus to Cart" data-id="6" data-name="Creed Aventus">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 7: Baccarat Rouge 540 -->
+                    <article class="product-card" data-id="7" data-category="unisex" data-family="amber" data-price="44999" data-name="Baccarat Rouge 540" data-rating="5.0">
+                        <div class="product-badge badge-signature">Iconic</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Baccarat Rouge 540 details">
+                            <img src="../images/product-baccarat-rouge.png" alt="Baccarat Rouge 540 Perfume" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Maison Francis Kurkdjian</span>
+                                <h3 class="product-name">Baccarat Rouge 540</h3>
+                                <p class="product-notes">Jasmine &bull; Saffron &bull; Ambergris &bull; Cedar</p>
+                                <span class="product-price">Rs. 44,999</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Baccarat Rouge 540 to Cart" data-id="7" data-name="Baccarat Rouge 540">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 8: Tom Ford Oud Wood -->
+                    <article class="product-card" data-id="8" data-category="unisex" data-family="woody" data-price="39500" data-name="Tom Ford Oud Wood" data-rating="4.9">
+                        <div class="product-badge badge-luxury">Private Blend</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Tom Ford Oud Wood details">
+                            <img src="../images/product-tomford-oud.png" alt="Tom Ford Oud Wood Perfume Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Tom Ford</span>
+                                <h3 class="product-name">Oud Wood</h3>
+                                <p class="product-notes">Rare Oud &bull; Rosewood &bull; Cardamom &bull; Vetiver</p>
+                                <span class="product-price">Rs. 39,500</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Tom Ford Oud Wood to Cart" data-id="8" data-name="Tom Ford Oud Wood">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 9: YSL Libre -->
+                    <article class="product-card" data-id="9" data-category="women" data-family="floral" data-price="23899" data-name="YSL Libre" data-rating="4.8">
+                        <div class="product-badge badge-new">Popular</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View YSL Libre details">
+                            <img src="../images/product-ysl-libre.png" alt="YSL Libre Eau de Parfum" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Yves Saint Laurent</span>
+                                <h3 class="product-name">Libre Eau de Parfum</h3>
+                                <p class="product-notes">Lavender Essence &bull; Orange Blossom &bull; Vanilla</p>
+                                <span class="product-price">Rs. 23,899</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add YSL Libre to Cart" data-id="9" data-name="YSL Libre">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 10: Parfums de Marly Delina -->
+                    <article class="product-card" data-id="10" data-category="women" data-family="floral" data-price="38500" data-name="Parfums de Marly Delina" data-rating="4.9">
+                        <div class="product-badge badge-signature">Niche</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Delina details">
+                            <img src="../images/product-delina.png" alt="Parfums de Marly Delina Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Parfums de Marly</span>
+                                <h3 class="product-name">Delina</h3>
+                                <p class="product-notes">Turkish Rose &bull; Lychee &bull; Incense &bull; Cashmeran</p>
+                                <span class="product-price">Rs. 38,500</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Parfums de Marly Delina to Cart" data-id="10" data-name="Parfums de Marly Delina">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 11: Maison Margiela Jazz Club -->
+                    <article class="product-card" data-id="11" data-category="unisex" data-family="gourmand" data-price="24500" data-name="Maison Margiela Jazz Club" data-rating="4.8">
+                        <div class="product-badge badge-new">Curator Pick</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Jazz Club details">
+                            <img src="../images/product-jazz-club.png" alt="Maison Margiela Replica Jazz Club" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Maison Margiela</span>
+                                <h3 class="product-name">Replica Jazz Club</h3>
+                                <p class="product-notes">Rum Absolute &bull; Tobacco Leaf &bull; Pink Pepper</p>
+                                <span class="product-price">Rs. 24,500</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Jazz Club to Cart" data-id="11" data-name="Maison Margiela Jazz Club">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 12: Le Labo Santal 33 -->
+                    <article class="product-card" data-id="12" data-category="unisex" data-family="woody" data-price="37000" data-name="Le Labo Santal 33" data-rating="4.9">
+                        <div class="product-badge badge-signature">Cult Classic</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Santal 33 details">
+                            <img src="../images/product-santal-33.png" alt="Le Labo Santal 33 Perfume" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Le Labo</span>
+                                <h3 class="product-name">Santal 33</h3>
+                                <p class="product-notes">Cardamom &bull; Violet &bull; Australian Sandalwood</p>
+                                <span class="product-price">Rs. 37,000</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Le Labo Santal 33 to Cart" data-id="12" data-name="Le Labo Santal 33">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 13: Jo Malone Wood Sage & Sea Salt -->
+                    <article class="product-card" data-id="13" data-category="unisex" data-family="fresh" data-price="19800" data-name="Jo Malone Wood Sage" data-rating="4.7">
+                        <div class="product-badge badge-new">Refreshing</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Jo Malone Wood Sage details">
+                            <img src="../images/product-jomalone-woodsage.png" alt="Jo Malone Cologne Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Jo Malone</span>
+                                <h3 class="product-name">Wood Sage &amp; Sea Salt</h3>
+                                <p class="product-notes">Sea Salt &bull; Red Algae &bull; Earthy Sage</p>
+                                <span class="product-price">Rs. 19,800</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Jo Malone Wood Sage to Cart" data-id="13" data-name="Jo Malone Wood Sage">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 14: Chanel Coco Mademoiselle -->
+                    <article class="product-card" data-id="14" data-category="women" data-family="amber" data-price="25499" data-name="Chanel Coco Mademoiselle" data-rating="4.9">
+                        <div class="product-badge badge-bestseller">Timeless</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Coco Mademoiselle details">
+                            <img src="../images/product-coco-mademoiselle.png" alt="Chanel Coco Mademoiselle Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Chanel</span>
+                                <h3 class="product-name">Coco Mademoiselle</h3>
+                                <p class="product-notes">Orange &bull; Jasmine &bull; Turkish Rose &bull; Patchouli</p>
+                                <span class="product-price">Rs. 25,499</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Chanel Coco Mademoiselle to Cart" data-id="14" data-name="Chanel Coco Mademoiselle">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 15: Kilian Angels' Share -->
+                    <article class="product-card" data-id="15" data-category="unisex" data-family="gourmand" data-price="36999" data-name="Kilian Angels Share" data-rating="4.9">
+                        <div class="product-badge badge-signature">Prestige</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Angels Share details">
+                            <img src="../images/product-angels-share.png" alt="Kilian Angels Share Carafe Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Kilian Paris</span>
+                                <h3 class="product-name">Angels' Share</h3>
+                                <p class="product-notes">Cognac Essence &bull; Cinnamon &bull; Tonka &bull; Oak</p>
+                                <span class="product-price">Rs. 36,999</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Kilian Angels Share to Cart" data-id="15" data-name="Kilian Angels Share">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Product 16: Acqua di GiÃ² Parfum -->
+                    <article class="product-card" data-id="16" data-category="men" data-family="fresh" data-price="21500" data-name="Acqua di Gio Parfum" data-rating="4.8">
+                        <div class="product-badge badge-new">Classic</div>
+                        <div class="product-img-wrapper" tabindex="0" role="button" aria-label="View Acqua di GiÃ² Parfum details">
+                            <img src="../images/product-acqua-di-gio.png" alt="Acqua di GiÃ² Parfum Bottle" class="product-img" loading="lazy">
+                            <div class="product-overlay-action">
+                                <span class="btn-quick-view">Quick View</span>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-meta">
+                                <span class="product-brand">Giorgio Armani</span>
+                                <h3 class="product-name">Acqua di Gi&ograve; Parfum</h3>
+                                <p class="product-notes">Marine Notes &bull; Rosemary &bull; Intense Incense</p>
+                                <span class="product-price">Rs. 21,500</span>
+                            </div>
+                            <button class="btn-add-cart" aria-label="Add Acqua di GiÃ² to Cart" data-id="16" data-name="Acqua di GiÃ² Parfum">
+                                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Empty state when no filters match -->
+                <div class="catalog-empty-state" id="catalogEmptyState" style="display:none;">
+                    <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                    <h3 class="empty-title">No Fragrances Found</h3>
+                    <p class="empty-desc">We couldn't find any perfumes matching your exact combination. Try clearing your filters or searching a different note.</p>
+                    <button class="btn-primary" id="btnEmptyReset">Reset Filters &rarr;</button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ===================================================================
+             4. NEWSLETTER SECTION
+             =================================================================== -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-inner">
+                    
+                    <div class="newsletter-headings">
+                        <h2 class="newsletter-title">Stay in the Loop</h2>
+                        <p class="newsletter-subtitle">Get exclusive private sales and new releases first.</p>
+                    </div>
+
+                    <!-- Subscription Form -->
+                    <div class="newsletter-form-col">
+                        <form class="newsletter-form" id="newsletterForm" novalidate>
+                            <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+                            <button type="submit" class="btn-subscribe">
+                                <span>Subscribe</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </button>
+                        </form>
+                        <div class="newsletter-feedback" id="newsletterFeedback" role="status"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =======================================================================
+         5. SITE FOOTER
+         ======================================================================= -->
+    <footer class="site-footer">
+        <div class="container">
+            
+            <div class="footer-top">
+                <!-- Logo & Brand (Links back to Homepage) -->
+                <a href="01.  homepage.html" class="brand-logo" aria-label="Omniscent Homepage">
+                    <img src="../images/logo.png" alt="Omniscent Emblem" class="brand-icon">
+                    <span class="brand-name">OMNISCENT</span>
+                </a>
+
+                <!-- Footer Navigation -->
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                    <a href="01.  homepage.html" class="footer-link">Home</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="02.  shop.html" class="footer-link active">Shop All</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="#men" class="footer-link">Men</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="#women" class="footer-link">Women</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="#unisex" class="footer-link">Unisex</a>
+                </nav>
+
+                <!-- Social Media Channels -->
+                <div class="footer-socials-group">
+                    <span class="footer-social-vdivider" aria-hidden="true"></span>
+                    <div class="social-icons-wrap">
+                        <a href="https://instagram.com" class="social-icon-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="https://tiktok.com" class="social-icon-link" aria-label="TikTok" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </a>
+                        <a href="https://facebook.com" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://youtube.com" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright Notice with Horizontal Rule -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-line">
+                    <span class="footer-line" aria-hidden="true"></span>
+                    <p class="copyright-text">&copy; 2025 Omniscent. All rights reserved.</p>
+                    <span class="footer-line" aria-hidden="true"></span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- =======================================================================
+         6. LUXURY PRODUCT QUICK-VIEW MODAL ("Select & View Products")
+         ======================================================================= -->
+    <div class="product-modal" id="productModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalPerfumeName">
+        <div class="product-modal-backdrop" id="modalBackdrop"></div>
+        <div class="product-modal-content">
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close product view">&times;</button>
+            
+            <div class="modal-product-grid">
+                <!-- Modal Product Image -->
+                <div class="modal-visual-wrap">
+                    <img src="../images/product-signature-rose.png" alt="Perfume Visual" id="modalImg" class="modal-img">
+                    <span class="modal-badge" id="modalBadge">Signature</span>
+                </div>
+
+                <!-- Modal Product Editorial Details -->
+                <div class="modal-details">
+                    <span class="modal-brand" id="modalBrand">Omniscent</span>
+                    <h2 class="modal-name" id="modalPerfumeName">Signature Rose</h2>
+                    
+                    <div class="modal-rating-row">
+                        <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <span class="rating-val" id="modalRating">5.0</span>
+                        <span class="rating-count">(128 Verified Reviews)</span>
+                    </div>
+
+                    <div class="modal-price-wrap">
+                        <span class="modal-price" id="modalPrice">Rs. 28,000</span>
+                        <span class="tax-info">Tax included &bull; Free express delivery</span>
+                    </div>
+
+                    <p class="modal-description" id="modalDesc">
+                        A transcendent symphony of hand-harvested imperial roses draped in saffron and warm Australian sandalwood. Formulated to evoke eternal poise and an unforgettable lingering presence.
+                    </p>
+
+                    <!-- Olfactory Notes Pyramid -->
+                    <div class="modal-notes-pyramid">
+                        <div class="note-box">
+                            <span class="note-level">Top Notes</span>
+                            <span class="note-ingredients" id="modalTopNotes">Grasse Rose, Pink Pepper</span>
+                        </div>
+                        <div class="note-box">
+                            <span class="note-level">Heart Notes</span>
+                            <span class="note-ingredients" id="modalHeartNotes">Saffron, Golden Amber</span>
+                        </div>
+                        <div class="note-box">
+                            <span class="note-level">Base Notes</span>
+                            <span class="note-ingredients" id="modalBaseNotes">Sandalwood, White Musk</span>
+                        </div>
+                    </div>
+
+                    <!-- Size Selection -->
+                    <div class="modal-size-selector">
+                        <span class="selector-label">Select Volume:</span>
+                        <div class="size-options">
+                            <button class="size-btn active" data-size="50ml" data-multiplier="1">50 ml</button>
+                            <button class="size-btn" data-size="100ml" data-multiplier="1.55">100 ml <span class="size-save">Best Value</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Purchase Actions -->
+                    <div class="modal-purchase-row">
+                        <div class="quantity-control">
+                            <button class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">&minus;</button>
+                            <span class="qty-val" id="qtyVal">1</span>
+                            <button class="qty-btn" id="qtyPlus" aria-label="Increase quantity">&#43;</button>
+                        </div>
+                        <button class="btn-modal-add-cart" id="modalAddToCartBtn">
+                            <span>Add to Bag</span>
+                            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-perks">
+                        <div class="perk-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>100% Guaranteed Authentic</span>
+                        </div>
+                        <div class="perk-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Complimentary Signature Gift Box</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =======================================================================
+         7. LUXURY SEARCH MODAL OVERLAY
+         ======================================================================= -->
+    <div class="search-modal" id="searchModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="searchModalTitle">
+        <div class="search-modal-backdrop" id="searchBackdrop"></div>
+        <div class="search-modal-box">
+            <div class="search-box-header">
+                <h3 class="search-modal-title" id="searchModalTitle">Search Fragrances</h3>
+                <button class="search-close-btn" id="searchCloseBtn" aria-label="Close Search Overlay">&times;</button>
+            </div>
+            <div class="search-input-wrap">
+                <svg class="search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" class="search-field" id="searchField" placeholder="Search by name, scent family, or brand..." autocomplete="off">
+            </div>
+            <div class="search-quick-tags">
+                <span class="quick-label">Trending Notes:</span>
+                <button class="quick-tag" data-query="Rose">Rose</button>
+                <button class="quick-tag" data-query="Woody">Woody</button>
+                <button class="quick-tag" data-query="Amber">Amber</button>
+                <button class="quick-tag" data-query="Floral">Floral</button>
+                <button class="quick-tag" data-query="Citrus">Citrus</button>
+                <button class="quick-tag" data-query="Vanilla">Vanilla</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =======================================================================
+         8. LUXURY TOAST NOTIFICATION
+         ======================================================================= -->
+    <div class="cart-toast" id="cartToast" role="alert" aria-live="polite">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span class="toast-msg">Added <strong id="toastProductName">Perfume</strong> to your bag!</span>
+        <a href="12.  checkout-flow.html" class="toast-link">View Bag</a>
+    </div>
+
+
+    <!-- =======================================================================
+         SCRIPTS
+         ======================================================================= -->
+    <script src="../js/script.js"></script>
+
+</body>
+</html>
