@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us &mdash; Our Heritage | OMNISCENT</title>
+
+    <meta name="description" content="Discover the story, heritage and philosophy behind OMNISCENT — a passion for fragrance and a love for elegance.">
+    <meta name="theme-color" content="#F6ECE5">
+
+    <!-- Google Fonts (matches all other pages) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <!-- Shared & Page Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about-us.css">
+</head>
+<body>
+
+    <!-- =======================================================================
+         1. SITE HEADER / NAVIGATION (identical to homepage & gift-sets)
+         ======================================================================= -->
+    <header class="site-header" id="siteHeader">
+        <div class="nav-container">
+
+            <!-- Brand Logo & Name -->
+            <a href="01.  homepage.html" class="brand-logo" aria-label="Omniscent Homepage">
+                <img src="../images/logo.png" alt="Omniscent Emblem" class="brand-icon"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <!-- SVG fallback logo (shown when logo.png is not available locally) -->
+                <svg class="brand-icon brand-icon-fallback" viewBox="0 0 64 64" aria-hidden="true" style="display:none">
+                    <defs>
+                        <linearGradient id="omniscentRose" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%"   stop-color="#D9918F"/>
+                            <stop offset="55%"  stop-color="#C77A73"/>
+                            <stop offset="100%" stop-color="#8C4343"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="32" cy="36" r="18" fill="none" stroke="url(#omniscentRose)" stroke-width="2.5"/>
+                    <rect   x="26" y="14" width="12" height="5" rx="2" fill="url(#omniscentRose)"/>
+                    <rect   x="29" y="19" width="6"  height="4" fill="#8C4343"/>
+                    <path d="M20 35c2-6 8-10 14-8 4 1 6 5 4 9-2 3-7 3-8 7 4 0 8-2 11-6"
+                          fill="none" stroke="url(#omniscentRose)" stroke-width="2.4" stroke-linecap="round"/>
+                    <circle cx="44" cy="49" r="3.5" fill="#C77A73"/>
+                </svg>
+                <span class="brand-name">OMNISCENT</span>
+            </a>
+
+            <!-- Central Navigation -->
+            <nav class="nav-center" aria-label="Main Navigation">
+                <a href="02.  shop.html" class="nav-pill">
+                    <span>Shop All</span>
+                    <span class="dropdown-arrow" aria-hidden="true">&#9662;</span>
+                </a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="02.  shop.html?category=men"    class="nav-link">Men</a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="02.  shop.html?category=women"  class="nav-link">Women</a>
+                <span class="nav-divider" aria-hidden="true">|</span>
+                <a href="02.  shop.html?category=unisex" class="nav-link">Unisex</a>
+            </nav>
+
+            <!-- Right Actions -->
+            <div class="nav-right">
+                <span class="nav-divider-light" aria-hidden="true">|</span>
+
+                <!-- Search -->
+                <button class="nav-action-btn search-btn" id="searchBtn" type="button" aria-label="Search Fragrances">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+
+                <!-- Shopping Bag -->
+                <a href="11.  cart.html" class="nav-action-btn cart-btn" id="cartBtn" aria-label="Shopping Bag">
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <!-- Mobile Hamburger -->
+                <button class="nav-toggle" id="navToggle" type="button"
+                        aria-label="Toggle Navigation Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
+            <a href="01.  homepage.html"           class="mobile-nav-link">Home</a>
+            <a href="02.  shop.html"               class="mobile-nav-link">Shop All</a>
+            <a href="02.  shop.html?category=men"    class="mobile-nav-link">Men</a>
+            <a href="02.  shop.html?category=women"  class="mobile-nav-link">Women</a>
+            <a href="02.  shop.html?category=unisex" class="mobile-nav-link">Unisex</a>
+            <a href="10.  about-us.html"           class="mobile-nav-link">About Us</a>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- =======================================================================
+             2. OUR STORY — HERO SECTION
+             ======================================================================= -->
+        <section class="about-hero-section" id="ourStory">
+            <div class="about-hero-wrap">
+
+                <!-- Left: Text Content -->
+                <div class="about-hero-content">
+                    <p class="about-tagline">
+                        <span class="tagline-line" aria-hidden="true"></span>
+                        <span class="tagline-text">OUR STORY</span>
+                        <span class="tagline-line" aria-hidden="true"></span>
+                    </p>
+
+                    <h1 class="about-hero-title">
+                        The Art of<br>
+                        <em class="accent-script">Fragrance</em>
+                    </h1>
+
+                    <p class="about-hero-desc">
+                        More than a scent, fragrance is a story — an invisible thread that connects memory, 
+                        emotion, and identity. At OMNISCENT, every bottle we craft is a chapter in that story.
+                    </p>
+
+                    <a href="#ourHeritage" class="btn-primary about-cta" id="discoverHeritagBtn">
+                        <span>Discover Our Heritage</span>
+                        <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+
+                <!-- Right: Visual composition -->
+                <div class="about-hero-visual">
+                    <div class="about-hero-frame">
+                        <!-- Perfume bottles image (reuse existing hero asset) -->
+                        <img src="../images/hero-perfume-hq.png"
+                             alt="OMNISCENT luxury perfume bottle"
+                             class="about-hero-img"
+                             loading="eager"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- SVG fallback when image not found locally -->
+                        <div class="about-hero-svg-fallback" aria-hidden="true" style="display:none">
+                            <svg viewBox="0 0 320 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="bottleBodyGrad" x1="100" y1="80" x2="220" y2="380" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%"   stop-color="#FAF4F0"/>
+                                        <stop offset="100%" stop-color="#E8D2C6"/>
+                                    </linearGradient>
+                                    <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%"   stop-color="#ECCFC6" stop-opacity="0.5"/>
+                                        <stop offset="100%" stop-color="#F6ECE5" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <linearGradient id="bottleRibbonGrad" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%"   stop-color="#D9918F"/>
+                                        <stop offset="100%" stop-color="#B66A64"/>
+                                    </linearGradient>
+                                </defs>
+                                <!-- Ambient glow -->
+                                <ellipse cx="160" cy="220" rx="130" ry="150" fill="url(#heroGlow)"/>
+                                <!-- Bottle body -->
+                                <rect x="108" y="140" width="104" height="220" rx="16" fill="url(#bottleBodyGrad)" stroke="#D8C7BF" stroke-width="1.5"/>
+                                <!-- Interior highlight -->
+                                <rect x="118" y="152" width="84" height="196" rx="10" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.7"/>
+                                <!-- Label area -->
+                                <rect x="120" y="210" width="80" height="80" rx="6" fill="#FFFFFF" stroke="#E8D8CF" stroke-width="1"/>
+                                <text x="160" y="244" text-anchor="middle" font-family="'Cinzel',serif" font-size="9" letter-spacing="2" fill="#1D1516">OMNISCENT</text>
+                                <text x="160" y="262" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="13" fill="#C77A73">Signature Rose</text>
+                                <line x1="130" y1="272" x2="190" y2="272" stroke="#D8C7BF" stroke-width="0.8"/>
+                                <text x="160" y="284" text-anchor="middle" font-family="'Montserrat',sans-serif" font-size="7" letter-spacing="1.5" fill="#9E8E8A">EAU DE PARFUM</text>
+                                <!-- Bottle neck -->
+                                <rect x="140" y="96" width="40" height="48" rx="6" fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1.2"/>
+                                <!-- Cap -->
+                                <rect x="132" y="68" width="56" height="32" rx="8" fill="#C77A73" stroke="#B66A64" stroke-width="1.2"/>
+                                <!-- Horizontal ribbon band -->
+                                <rect x="108" y="195" width="104" height="10" fill="url(#bottleRibbonGrad)" opacity="0.6"/>
+                                <!-- Botanical sprigs -->
+                                <g stroke="#C77A73" stroke-width="1.2" stroke-linecap="round" opacity="0.6">
+                                    <path d="M60 280 C44 254, 38 226, 50 200"/>
+                                    <path d="M46 248 C32 242, 24 230, 22 216"/>
+                                    <ellipse cx="21" cy="213" rx="7" ry="4" transform="rotate(-30 21 213)" fill="#ECCFC6" stroke="#C77A73"/>
+                                    <ellipse cx="51" cy="197" rx="7.5" ry="4" transform="rotate(20 51 197)" fill="#ECCFC6" stroke="#C77A73"/>
+                                    <path d="M260 280 C276 254, 282 226, 270 200"/>
+                                    <path d="M274 248 C288 242, 296 230, 298 216"/>
+                                    <ellipse cx="299" cy="213" rx="7" ry="4" transform="rotate(30 299 213)" fill="#ECCFC6" stroke="#C77A73"/>
+                                    <ellipse cx="269" cy="197" rx="7.5" ry="4" transform="rotate(-20 269 197)" fill="#ECCFC6" stroke="#C77A73"/>
+                                </g>
+                                <!-- Ground shadow -->
+                                <ellipse cx="160" cy="364" rx="80" ry="10" fill="#D8C7BF" opacity="0.4"/>
+                            </svg>
+                        </div>
+                        <!-- Sparkle accent (matches homepage) -->
+                        <div class="hero-sparkle" aria-hidden="true">
+                            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 0C16 8.83656 23.1634 16 32 16C23.1634 16 16 23.1634 16 32C16 23.1634 8.83656 16 0 16C8.83656 16 16 8.83656 16 0Z" fill="#FFFDF8"/>
+                                <circle cx="16" cy="16" r="3.5" fill="#FFE5DC"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =======================================================================
+             3. DECORATIVE FRAGRANCE BANNER
+             ======================================================================= -->
+        <section class="fragrance-banner-section" aria-label="Fragrance banner">
+            <div class="fragrance-banner-inner">
+
+                <!-- Background image (Burgundy Silk Waves texture) -->
+                <div class="banner-bg-layer" aria-hidden="true">
+                    <img src="../images/Burgundy Silk Waves.png"
+                         alt=""
+                         class="banner-bg-img"
+                         loading="lazy"
+                         onerror="this.style.display='none';">
+                </div>
+
+                <!-- Overlay content -->
+                <div class="banner-content">
+                    <!-- Decorative SVG: perfume bottles + florals in a wide elegant strip -->
+                    <div class="banner-illustration" aria-hidden="true">
+                        <svg viewBox="0 0 1000 220" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <linearGradient id="bannerBotGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%"   stop-color="#FAF4F0" stop-opacity="0.95"/>
+                                    <stop offset="100%" stop-color="#EDD8CE" stop-opacity="0.85"/>
+                                </linearGradient>
+                                <linearGradient id="bannerRib" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%"   stop-color="#D9918F"/>
+                                    <stop offset="100%" stop-color="#B66A64"/>
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Repeating botanical leaves, left side -->
+                            <g stroke="#C77A73" stroke-width="1.1" stroke-linecap="round" opacity="0.55" fill="none">
+                                <path d="M40 180 C24 148, 20 112, 36 84"/>
+                                <path d="M26 148 C12 136, 6 118, 8 100"/>
+                                <ellipse cx="7" cy="97" rx="8" ry="4.5" transform="rotate(-25 7 97)"  fill="#ECCFC6" stroke="#C77A73"/>
+                                <ellipse cx="37" cy="80" rx="8.5" ry="4.5" transform="rotate(18 37 80)" fill="#ECCFC6" stroke="#C77A73"/>
+                                <path d="M68 185 C56 162, 55 136, 66 112"/>
+                                <ellipse cx="66" cy="108" rx="7" ry="4" transform="rotate(15 66 108)" fill="#FAF4F0" stroke="#C77A73"/>
+                            </g>
+
+                            <!-- Bottle 1 — left -->
+                            <rect x="130" y="40" width="60" height="148" rx="10" fill="url(#bannerBotGrad)" stroke="#D8C7BF" stroke-width="1.2"/>
+                            <rect x="148" y="22"  width="24" height="22"  rx="5"  fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1"/>
+                            <rect x="152" y="10"  width="16" height="14"  rx="4"  fill="#C77A73"/>
+                            <rect x="130" y="98"  width="60" height="7"   fill="url(#bannerRib)" opacity="0.75"/>
+                            <rect x="156" y="40"  width="8"  height="148" fill="url(#bannerRib)" opacity="0.65"/>
+                            <rect x="142" y="112" width="36" height="44"  rx="4"  fill="white" stroke="#E8D8CF" stroke-width="0.8" opacity="0.9"/>
+                            <text x="160" y="130" text-anchor="middle" font-family="'Cinzel',serif" font-size="6.5" letter-spacing="1.5" fill="#1D1516">OMNISCENT</text>
+                            <text x="160" y="146" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="10" fill="#C77A73">Elegance</text>
+
+                            <!-- Floral cluster between bottles 1 & 2 -->
+                            <g opacity="0.7">
+                                <circle cx="260" cy="140" r="22" fill="#ECCFC6" opacity="0.4"/>
+                                <g stroke="#C77A73" stroke-width="1" stroke-linecap="round" fill="none">
+                                    <path d="M250 155 C240 138, 242 118, 256 110"/>
+                                    <path d="M270 155 C280 138, 278 118, 264 110"/>
+                                    <ellipse cx="248" cy="106" rx="9" ry="5"  transform="rotate(-20 248 106)" fill="#ECCFC6" stroke="#C77A73"/>
+                                    <ellipse cx="272" cy="106" rx="9" ry="5"  transform="rotate(20 272 106)"  fill="#FAF4F0" stroke="#C77A73"/>
+                                    <ellipse cx="260" cy="100" rx="10" ry="5.5" fill="#ECCFC6" stroke="#C77A73"/>
+                                </g>
+                            </g>
+
+                            <!-- Bottle 2 — taller centre-left -->
+                            <rect x="320" y="20"  width="68" height="178" rx="12" fill="url(#bannerBotGrad)" stroke="#C8B5AD" stroke-width="1.5"/>
+                            <rect x="340" y="4"   width="28" height="20"  rx="5"  fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1.2"/>
+                            <rect x="344" y="-6"  width="20" height="12"  rx="4"  fill="#B66A64"/>
+                            <rect x="320" y="96"  width="68" height="8"   fill="url(#bannerRib)" opacity="0.75"/>
+                            <rect x="350" y="20"  width="8"  height="178" fill="url(#bannerRib)" opacity="0.65"/>
+                            <rect x="332" y="112" width="44" height="52"  rx="4"  fill="white"   stroke="#E8D8CF" stroke-width="0.8" opacity="0.9"/>
+                            <text x="354" y="132" text-anchor="middle" font-family="'Cinzel',serif" font-size="7" letter-spacing="1.5" fill="#1D1516">OMNISCENT</text>
+                            <text x="354" y="150" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="11" fill="#C77A73">Signature</text>
+                            <text x="354" y="162" text-anchor="middle" font-family="'Montserrat',sans-serif" font-size="5.5" letter-spacing="1.5" fill="#9E8E8A">EAU DE PARFUM</text>
+
+                            <!-- Centre quote text -->
+                            <text x="500" y="95"  text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="22" fill="#1D1516" opacity="0.82">&#8220;A scent is a memory</text>
+                            <text x="500" y="124" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="22" fill="#1D1516" opacity="0.82">you carry with you.&#8221;</text>
+                            <line x1="410" y1="142" x2="590" y2="142" stroke="#C77A73" stroke-width="0.8" opacity="0.5"/>
+                            <text x="500" y="160" text-anchor="middle" font-family="'Montserrat',sans-serif" font-size="8" letter-spacing="2.5" fill="#C77A73" opacity="0.75">OMNISCENT</text>
+
+                            <!-- Bottle 3 — centre-right -->
+                            <rect x="612" y="28"  width="64" height="168" rx="10" fill="url(#bannerBotGrad)" stroke="#D8C7BF" stroke-width="1.2"/>
+                            <rect x="630" y="12"  width="28" height="20"  rx="5"  fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1"/>
+                            <rect x="634" y="2"   width="20" height="12"  rx="4"  fill="#C77A73"/>
+                            <rect x="612" y="98"  width="64" height="7"   fill="url(#bannerRib)" opacity="0.7"/>
+                            <rect x="640" y="28"  width="8"  height="168" fill="url(#bannerRib)" opacity="0.6"/>
+                            <rect x="622" y="114" width="40" height="48"  rx="4"  fill="white"   stroke="#E8D8CF" stroke-width="0.8" opacity="0.9"/>
+                            <text x="644" y="134" text-anchor="middle" font-family="'Cinzel',serif" font-size="6.5" letter-spacing="1.5" fill="#1D1516">OMNISCENT</text>
+                            <text x="644" y="152" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="10" fill="#C77A73">Heritage</text>
+
+                            <!-- Floral cluster between bottles 3 & 4 -->
+                            <g opacity="0.65">
+                                <circle cx="740" cy="130" r="20" fill="#ECCFC6" opacity="0.35"/>
+                                <g stroke="#C77A73" stroke-width="1" stroke-linecap="round" fill="none">
+                                    <path d="M730 148 C720 128, 724 108, 736 100"/>
+                                    <path d="M750 148 C760 128, 756 108, 744 100"/>
+                                    <ellipse cx="728" cy="96" rx="8.5" ry="4.5" transform="rotate(-18 728 96)" fill="#ECCFC6" stroke="#C77A73"/>
+                                    <ellipse cx="752" cy="96" rx="8.5" ry="4.5" transform="rotate(18 752 96)"  fill="#FAF4F0" stroke="#C77A73"/>
+                                    <ellipse cx="740" cy="92" rx="9" ry="5"  fill="#ECCFC6" stroke="#C77A73"/>
+                                </g>
+                            </g>
+
+                            <!-- Bottle 4 — right -->
+                            <rect x="802" y="44"  width="58" height="144" rx="10" fill="url(#bannerBotGrad)" stroke="#D8C7BF" stroke-width="1.2"/>
+                            <rect x="818" y="28"  width="26" height="20"  rx="5"  fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1"/>
+                            <rect x="822" y="18"  width="18" height="12"  rx="4"  fill="#C77A73"/>
+                            <rect x="802" y="98"  width="58" height="6"   fill="url(#bannerRib)" opacity="0.7"/>
+                            <rect x="827" y="44"  width="8"  height="144" fill="url(#bannerRib)" opacity="0.6"/>
+                            <rect x="812" y="110" width="38" height="44"  rx="4"  fill="white"   stroke="#E8D8CF" stroke-width="0.8" opacity="0.9"/>
+                            <text x="831" y="128" text-anchor="middle" font-family="'Cinzel',serif" font-size="6" letter-spacing="1.4" fill="#1D1516">OMNISCENT</text>
+                            <text x="831" y="145" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="10" fill="#C77A73">Luxury</text>
+
+                            <!-- Right botanical leaves -->
+                            <g stroke="#C77A73" stroke-width="1.1" stroke-linecap="round" opacity="0.55" fill="none">
+                                <path d="M932 180 C948 148, 952 112, 936 84"/>
+                                <path d="M946 148 C960 136, 966 118, 964 100"/>
+                                <ellipse cx="965" cy="97" rx="8" ry="4.5" transform="rotate(25 965 97)"  fill="#ECCFC6" stroke="#C77A73"/>
+                                <ellipse cx="935" cy="80" rx="8.5" ry="4.5" transform="rotate(-18 935 80)" fill="#ECCFC6" stroke="#C77A73"/>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Text overlay on banner -->
+                    <div class="banner-text-overlay">
+                        <p class="banner-label">OMNISCENT &mdash; LUXURY FRAGRANCE</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =======================================================================
+             4. OUR HERITAGE SECTION
+             ======================================================================= -->
+        <section class="heritage-section" id="ourHeritage">
+            <div class="container">
+
+                <!-- Section header -->
+                <div class="heritage-header">
+                    <p class="about-section-tagline">
+                        <span class="tagline-line" aria-hidden="true"></span>
+                        <span class="tagline-text">CRAFTED WITH CARE</span>
+                        <span class="tagline-line" aria-hidden="true"></span>
+                    </p>
+                    <h2 class="heritage-title">Our <em class="accent-script">Heritage</em></h2>
+                    <p class="heritage-subtitle">A passion for fragrance. A love for elegance.</p>
+                </div>
+
+                <!-- Heritage intro paragraph -->
+                <div class="heritage-body">
+                    <p class="heritage-para">
+                        OMNISCENT was born from a singular belief: that fragrance is one of the most 
+                        intimate and powerful forms of self-expression. Our collections are built around 
+                        three pillars — quality, creativity, and care — each bottle a testament to the 
+                        artisans and botanists who pour their craft into every note.
+                    </p>
+                </div>
+
+                <!-- =============================================================
+                     5. SIDE-BY-SIDE HERITAGE CARDS
+                     ============================================================= -->
+                <div class="heritage-cards-grid">
+
+                    <!-- Card 1: Our Inspiration -->
+                    <article class="heritage-card">
+                        <div class="heritage-card-icon" aria-hidden="true">
+                            <!-- Rose petal / inspiration icon SVG -->
+                            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="40" r="36" fill="#ECCFC6" opacity="0.3"/>
+                                <!-- Stylised open rose -->
+                                <g fill="none" stroke="#C77A73" stroke-width="1.6" stroke-linecap="round">
+                                    <path d="M40 54 C32 46, 24 36, 28 24 C32 14, 40 18, 40 28"/>
+                                    <path d="M40 54 C48 46, 56 36, 52 24 C48 14, 40 18, 40 28"/>
+                                    <path d="M40 54 C30 48, 20 42, 22 30 C24 20, 32 22, 36 32"/>
+                                    <path d="M40 54 C50 48, 60 42, 58 30 C56 20, 48 22, 44 32"/>
+                                    <circle cx="40" cy="40" r="6" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.4"/>
+                                    <circle cx="40" cy="40" r="2.5" fill="#C77A73"/>
+                                </g>
+                                <path d="M40 58 C40 64, 38 68, 36 72" stroke="#B66A64" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+                            </svg>
+                        </div>
+                        <div class="heritage-card-body">
+                            <span class="heritage-card-label">01</span>
+                            <h3 class="heritage-card-title">Our <em class="accent-script-sm">Inspiration</em></h3>
+                            <p class="heritage-card-desc">
+                                Inspired by beauty in its many forms — the bloom of a rose at dawn, the warmth 
+                                of amber in candlelight, the cool serenity of a cedar forest after rain. 
+                                Nature is our muse, and each fragrance is our homage to its poetry.
+                            </p>
+                            <a href="02.  shop.html" class="heritage-card-link">
+                                Explore our scents <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Our Philosophy -->
+                    <article class="heritage-card">
+                        <div class="heritage-card-icon" aria-hidden="true">
+                            <!-- Diamond / elegance icon SVG -->
+                            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="40" r="36" fill="#ECCFC6" opacity="0.3"/>
+                                <!-- Stylised diamond facets -->
+                                <g stroke="#C77A73" stroke-width="1.6" stroke-linejoin="round" fill="none">
+                                    <polygon points="40,14 62,36 40,66 18,36" fill="#ECCFC6" fill-opacity="0.4" stroke="#C77A73"/>
+                                    <line x1="18" y1="36" x2="62" y2="36"/>
+                                    <line x1="40" y1="14" x2="18" y2="36"/>
+                                    <line x1="40" y1="14" x2="62" y2="36"/>
+                                    <line x1="40" y1="66" x2="29" y2="36"/>
+                                    <line x1="40" y1="66" x2="51" y2="36"/>
+                                    <line x1="40" y1="14" x2="40" y2="66"/>
+                                </g>
+                                <!-- Sparkle at top -->
+                                <path d="M40 8 C40 11.5 43.5 15 47 15 C43.5 15 40 18.5 40 22 C40 18.5 36.5 15 33 15 C36.5 15 40 11.5 40 8 Z" fill="#C77A73" opacity="0.7"/>
+                            </svg>
+                        </div>
+                        <div class="heritage-card-body">
+                            <span class="heritage-card-label">02</span>
+                            <h3 class="heritage-card-title">Our <em class="accent-script-sm">Philosophy</em></h3>
+                            <p class="heritage-card-desc">
+                                Elegance in fragrance means restraint as much as richness — knowing when a 
+                                single note sings louder than a chord. We believe in scents that evolve on 
+                                your skin, telling a different story with every hour.
+                            </p>
+                            <a href="09.  gift-sets.html" class="heritage-card-link">
+                                View gift collections <span aria-hidden="true">&rarr;</span>
+                            </a>
+                        </div>
+                    </article>
+
+                </div><!-- /.heritage-cards-grid -->
+
+            </div><!-- /.container -->
+        </section>
+
+
+        <!-- =======================================================================
+             6. NEWSLETTER SECTION (identical structure to homepage & gift-sets)
+             ======================================================================= -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-inner">
+
+                    <div class="newsletter-headings">
+                        <h2 class="newsletter-title">Stay in the Loop</h2>
+                        <p class="newsletter-subtitle">Get exclusive offers and new arrivals.</p>
+                    </div>
+
+                    <div class="newsletter-form-col">
+                        <form class="newsletter-form" id="newsletterForm" novalidate>
+                            <input type="email" class="newsletter-input" id="newsletterEmail"
+                                   placeholder="Enter your email address"
+                                   required aria-label="Email address for newsletter">
+                            <button type="submit" class="btn-subscribe">
+                                <span>Subscribe</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </button>
+                        </form>
+                        <div class="newsletter-feedback" id="newsletterFeedback" role="status"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =======================================================================
+         7. SITE FOOTER (identical structure to homepage & gift-sets)
+         ======================================================================= -->
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="footer-top">
+                <!-- Logo & Brand -->
+                <a href="01.  homepage.html" class="brand-logo" aria-label="Omniscent Homepage">
+                    <img src="../images/logo.png" alt="Omniscent Emblem" class="brand-icon"
+                         onerror="this.style.display='none'">
+                    <span class="brand-name">OMNISCENT</span>
+                </a>
+
+                <!-- Footer Navigation -->
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                    <a href="02.  shop.html"               class="footer-link">Shop All</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="02.  shop.html?category=men"    class="footer-link">Men</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="02.  shop.html?category=women"  class="footer-link">Women</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="02.  shop.html?category=unisex" class="footer-link">Unisex</a>
+                </nav>
+
+                <!-- Social Media Icons -->
+                <div class="footer-socials-group">
+                    <span class="footer-social-vdivider" aria-hidden="true"></span>
+                    <div class="social-icons-wrap">
+                        <!-- Instagram -->
+                        <a href="https://instagram.com" class="social-icon-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://tiktok.com" class="social-icon-link" aria-label="TikTok" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="https://facebook.com" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://youtube.com" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- /.footer-top -->
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-line">
+                    <span class="footer-line" aria-hidden="true"></span>
+                    <p class="copyright-text">&copy; 2025 Omniscent. All rights reserved.</p>
+                    <span class="footer-line" aria-hidden="true"></span>
+                </div>
+            </div>
+
+        </div><!-- /.container -->
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+    <script src="../js/about-us.js"></script>
+</body>
+</html>
