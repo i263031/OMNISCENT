@@ -218,9 +218,276 @@
             </div>
         </section>
 
-        <!-- Scroll target for "Explore Collection" until Exclusive Collection section is implemented -->
-        <div id="exclusive-collection" class="collection-anchor-placeholder" aria-hidden="true"></div>
+        <!-- =======================================================================
+             2. EXCLUSIVE COLLECTION SECTION
+             ======================================================================= -->
+        <section class="exclusive-collection-section" id="exclusive-collection">
+            <div class="container">
+
+                <!-- Section Header -->
+                <div class="section-header">
+                    <p class="section-tagline">
+                        <span class="tagline-line" aria-hidden="true"></span>
+                        <span class="tagline-text">CURATED FOR YOU</span>
+                        <span class="tagline-line" aria-hidden="true"></span>
+                    </p>
+                    <h2 class="section-title">Our Exclusive <em class="accent-italic">Collection</em></h2>
+                    <p class="section-subtitle">Thoughtfully curated gift sets for every occasion — wrapped in luxury, gifted with love.</p>
+                </div>
+
+                <!-- Product Cards Grid -->
+                <div class="gift-cards-grid">
+
+                    <!-- Card 1: Signature Box -->
+                    <article class="gift-card">
+                        <div class="gift-card-visual">
+                            <!-- Signature Box SVG Illustration -->
+                            <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Signature Box gift set" role="img">
+                                <defs>
+                                    <linearGradient id="cardBox1Grad" x1="80" y1="80" x2="240" y2="220" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#FAF4F0"/>
+                                        <stop offset="100%" stop-color="#EDD8CE"/>
+                                    </linearGradient>
+                                    <linearGradient id="cardRibbon1" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#D9918F"/>
+                                        <stop offset="100%" stop-color="#B66A64"/>
+                                    </linearGradient>
+                                    <radialGradient id="cardGlow1" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#ECCFC6" stop-opacity="0.35"/>
+                                        <stop offset="100%" stop-color="#F6ECE5" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="160" cy="120" r="110" fill="url(#cardGlow1)"/>
+                                <!-- Single bottle silhouette -->
+                                <rect x="134" y="68" width="52" height="104" rx="8" fill="url(#cardBox1Grad)" stroke="#D8C7BF" stroke-width="1.5"/>
+                                <rect x="142" y="52" width="36" height="20" rx="6" fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1.2"/>
+                                <rect x="152" y="44" width="16" height="12" rx="3" fill="#C77A73"/>
+                                <!-- Ribbon wrap -->
+                                <rect x="134" y="108" width="52" height="8" fill="url(#cardRibbon1)" opacity="0.85"/>
+                                <rect x="156" y="68" width="8" height="104" fill="url(#cardRibbon1)" opacity="0.85"/>
+                                <!-- Bow -->
+                                <path d="M160 108 C148 104, 138 92, 144 86 C150 80, 158 96, 160 108 Z" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.2"/>
+                                <path d="M160 108 C172 104, 182 92, 176 86 C170 80, 162 96, 160 108 Z" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.2"/>
+                                <circle cx="160" cy="107" r="5.5" fill="#C77A73" stroke="#FAF4F0" stroke-width="1.2"/>
+                                <!-- Label -->
+                                <rect x="142" y="130" width="36" height="22" rx="3" fill="#FFFFFF" stroke="#E8D8CF" stroke-width="1"/>
+                                <text x="160" y="145" text-anchor="middle" font-family="'Cinzel', serif" font-size="6.5" fill="#1D1516" letter-spacing="1">OMNISCENT</text>
+                                <!-- Ground shadow -->
+                                <ellipse cx="160" cy="175" rx="52" ry="6" fill="#D8C7BF" opacity="0.4"/>
+                            </svg>
+                        </div>
+                        <div class="gift-card-body">
+                            <span class="gift-card-tag">Signature</span>
+                            <h3 class="gift-card-name">Signature Box</h3>
+                            <p class="gift-card-desc">One curated fragrance with satin wrap and hand-tied bow — the perfect first impression.</p>
+                            <div class="gift-card-footer">
+                                <span class="gift-card-price">Rs 650</span>
+                                <button class="btn-add-bag" data-product="Signature Box" data-price="650" aria-label="Add Signature Box to bag">
+                                    Add to Bag
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Discovery Kit -->
+                    <article class="gift-card gift-card--featured">
+                        <div class="gift-card-badge">Best Seller</div>
+                        <div class="gift-card-visual">
+                            <!-- Discovery Kit SVG (3 mini vials) -->
+                            <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Discovery Kit gift set" role="img">
+                                <defs>
+                                    <linearGradient id="cardBox2Grad" x1="80" y1="60" x2="240" y2="200" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#FAF4F0"/>
+                                        <stop offset="100%" stop-color="#EDD8CE"/>
+                                    </linearGradient>
+                                    <radialGradient id="cardGlow2" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#C77A73" stop-opacity="0.18"/>
+                                        <stop offset="100%" stop-color="#F6ECE5" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="160" cy="120" r="110" fill="url(#cardGlow2)"/>
+                                <!-- 3 mini discovery vials -->
+                                <rect x="96" y="72" width="38" height="96" rx="7" fill="url(#cardBox2Grad)" stroke="#D8C7BF" stroke-width="1.5"/>
+                                <rect x="141" y="64" width="38" height="104" rx="7" fill="url(#cardBox2Grad)" stroke="#C8B5AD" stroke-width="1.5"/>
+                                <rect x="186" y="72" width="38" height="96" rx="7" fill="url(#cardBox2Grad)" stroke="#D8C7BF" stroke-width="1.5"/>
+                                <!-- Vial caps -->
+                                <rect x="102" y="60" width="26" height="16" rx="4" fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1.2"/>
+                                <rect x="147" y="52" width="26" height="16" rx="4" fill="#C77A73" stroke="#B66A64" stroke-width="1.2"/>
+                                <rect x="192" y="60" width="26" height="16" rx="4" fill="#EDD8CE" stroke="#C8B5AD" stroke-width="1.2"/>
+                                <!-- Center ribbon bow -->
+                                <path d="M160 100 C148 96, 136 84, 142 76 C148 68, 158 86, 160 100 Z" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.2"/>
+                                <path d="M160 100 C172 96, 184 84, 178 76 C172 68, 162 86, 160 100 Z" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.2"/>
+                                <circle cx="160" cy="99" r="5.5" fill="#C77A73" stroke="#FAF4F0" stroke-width="1.2"/>
+                                <ellipse cx="160" cy="175" rx="72" ry="6" fill="#D8C7BF" opacity="0.4"/>
+                            </svg>
+                        </div>
+                        <div class="gift-card-body">
+                            <span class="gift-card-tag">Discovery</span>
+                            <h3 class="gift-card-name">Discovery Kit</h3>
+                            <p class="gift-card-desc">Three curated mini vials to explore our signature scent families — ideal for the curious nose.</p>
+                            <div class="gift-card-footer">
+                                <span class="gift-card-price">Rs 850</span>
+                                <button class="btn-add-bag" data-product="Discovery Kit" data-price="850" aria-label="Add Discovery Kit to bag">
+                                    Add to Bag
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: Luxury Collection -->
+                    <article class="gift-card">
+                        <div class="gift-card-visual">
+                            <!-- Luxury Collection SVG (gift box with multiple bottles) -->
+                            <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Luxury Collection gift set" role="img">
+                                <defs>
+                                    <linearGradient id="cardBox3Grad" x1="80" y1="60" x2="240" y2="220" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#FAF4F0"/>
+                                        <stop offset="100%" stop-color="#E8D8CF"/>
+                                    </linearGradient>
+                                    <linearGradient id="cardLid3" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#EDD8CE"/>
+                                        <stop offset="100%" stop-color="#D8C7BF"/>
+                                    </linearGradient>
+                                    <radialGradient id="cardGlow3" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%" stop-color="#ECCFC6" stop-opacity="0.3"/>
+                                        <stop offset="100%" stop-color="#F6ECE5" stop-opacity="0"/>
+                                    </radialGradient>
+                                </defs>
+                                <circle cx="160" cy="120" r="110" fill="url(#cardGlow3)"/>
+                                <!-- Open luxury box -->
+                                <rect x="90" y="128" width="140" height="80" rx="8" fill="url(#cardBox3Grad)" stroke="#C8B5AD" stroke-width="1.5"/>
+                                <rect x="82" y="108" width="156" height="24" rx="6" fill="url(#cardLid3)" stroke="#C8B5AD" stroke-width="1.5"/>
+                                <!-- 2 bottles inside -->
+                                <rect x="118" y="88" width="32" height="68" rx="6" fill="#FAF4F0" stroke="#D8C7BF" stroke-width="1.2"/>
+                                <rect x="170" y="88" width="32" height="68" rx="6" fill="#FAF4F0" stroke="#D8C7BF" stroke-width="1.2"/>
+                                <!-- Bottle caps -->
+                                <rect x="124" y="76" width="20" height="14" rx="3" fill="#C77A73"/>
+                                <rect x="176" y="76" width="20" height="14" rx="3" fill="#B66A64"/>
+                                <!-- Gold star accent -->
+                                <text x="160" y="152" text-anchor="middle" font-size="20" fill="#C77A73" opacity="0.5">✦</text>
+                                <!-- Ribbon on box -->
+                                <rect x="90" y="140" width="140" height="6" fill="#C77A73" opacity="0.6"/>
+                                <rect x="156" y="128" width="8" height="80" fill="#C77A73" opacity="0.6"/>
+                                <!-- Bow on lid -->
+                                <path d="M160 108 C148 104, 136 90, 143 82 C150 74, 158 94, 160 108 Z" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.2"/>
+                                <path d="M160 108 C172 104, 184 90, 177 82 C170 74, 162 94, 160 108 Z" fill="#ECCFC6" stroke="#C77A73" stroke-width="1.2"/>
+                                <circle cx="160" cy="107" r="5.5" fill="#C77A73" stroke="#FAF4F0" stroke-width="1.2"/>
+                                <ellipse cx="160" cy="212" rx="72" ry="6" fill="#D8C7BF" opacity="0.4"/>
+                            </svg>
+                        </div>
+                        <div class="gift-card-body">
+                            <span class="gift-card-tag">Luxury</span>
+                            <h3 class="gift-card-name">Luxury Collection</h3>
+                            <p class="gift-card-desc">Two full-sized signature fragrances in a keepsake gift box — an unforgettable indulgence.</p>
+                            <div class="gift-card-footer">
+                                <span class="gift-card-price">Rs 1,000</span>
+                                <button class="btn-add-bag" data-product="Luxury Collection" data-price="1000" aria-label="Add Luxury Collection to bag">
+                                    Add to Bag
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div><!-- /.gift-cards-grid -->
+
+            </div><!-- /.container -->
+        </section>
+
+
+        <!-- =======================================================================
+             3. NEWSLETTER SECTION — "Stay in the Loop" (matches homepage)
+             ======================================================================= -->
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-inner">
+
+                    <div class="newsletter-headings">
+                        <h2 class="newsletter-title">Stay in the Loop</h2>
+                        <p class="newsletter-subtitle">Get exclusive offers and new arrivals.</p>
+                    </div>
+
+                    <!-- Subscription Form -->
+                    <div class="newsletter-form-col">
+                        <form class="newsletter-form" id="newsletterForm" novalidate>
+                            <input type="email" class="newsletter-input" id="newsletterEmail"
+                                   placeholder="Enter your email address"
+                                   required aria-label="Email address for newsletter">
+                            <button type="submit" class="btn-subscribe">
+                                <span>Subscribe</span>
+                                <span aria-hidden="true">&rarr;</span>
+                            </button>
+                        </form>
+                        <div class="newsletter-feedback" id="newsletterFeedback" role="status"></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
     </main>
+
+
+    <!-- =======================================================================
+         4. SITE FOOTER (matches homepage footer)
+         ======================================================================= -->
+    <footer class="site-footer">
+        <div class="container">
+
+            <div class="footer-top">
+                <!-- Logo & Brand -->
+                <a href="01.  homepage.html" class="brand-logo" aria-label="Omniscent Homepage">
+                    <img src="../images/logo.png" alt="Omniscent Emblem" class="brand-icon"
+                         onerror="this.style.display='none'">
+                    <span class="brand-name">OMNISCENT</span>
+                </a>
+
+                <!-- Footer Navigation -->
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                    <a href="02.  shop.html" class="footer-link">Shop All</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="04.  men.html" class="footer-link">Men</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="03.  women.html" class="footer-link">Women</a>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="#" class="footer-link">Unisex</a>
+                </nav>
+
+                <!-- Social Media Icons -->
+                <div class="footer-socials-group">
+                    <span class="footer-social-vdivider" aria-hidden="true"></span>
+                    <div class="social-icons-wrap">
+                        <!-- Instagram -->
+                        <a href="https://instagram.com" class="social-icon-link" aria-label="Instagram" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://tiktok.com" class="social-icon-link" aria-label="TikTok" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.79 1.53V6.77a4.85 4.85 0 0 1-1.02-.08z"/></svg>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="https://facebook.com" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://youtube.com" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- /.footer-top -->
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-line">
+                    <span class="footer-line" aria-hidden="true"></span>
+                    <p class="copyright-text">&copy; 2025 Omniscent. All rights reserved.</p>
+                    <span class="footer-line" aria-hidden="true"></span>
+                </div>
+            </div>
+
+        </div><!-- /.container -->
+    </footer>
+
 
     <!-- Scripts -->
     <script src="../js/script.js"></script>
