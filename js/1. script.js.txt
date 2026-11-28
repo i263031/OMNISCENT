@@ -56,18 +56,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
        MODULE 2: SHOPPING CART & NOTIFICATION SYSTEM
-       Handles adding items, persisting count in localStorage, animating cart badge,
-       and displaying luxury toast notification.
+       Handles adding items, persisting bag & count in localStorage, animating
+       cart badge, and displaying luxury toast notification.
        ========================================================================== */
-    let cartItemCount = 0;
-    try {
-        const savedCount = localStorage.getItem('omniscent_cart_count');
-        if (savedCount !== null) {
-            cartItemCount = parseInt(savedCount, 10) || 0;
+    const CART_ITEMS_KEY = 'omniscent_cart_items';
+    const CART_COUNT_KEY = 'omniscent_cart_count';
+
+    const readCartItems = () => {
+        try {
+            const raw = localStorage.getItem(CART_ITEMS_KEY);
+            if (raw === null) return null;
+            const parsed = JSON.parse(raw);
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (e) {
+            return null;
         }
-    } catch (e) {
-        // Fallback for sandboxed or private browsing environments
-        cartItemCount = 0;
+    };
+
+    const writeCartItems = (items) => {
+        const totalCount = items.reduce((sum, item) => sum + (parseInt(item.qty, 10) || 0), 0);
+        cartItemCount = totalCount;
+        try {
+            localStorage.setItem(CART_ITEMS_KEY, JSON.stringify(items));
+            localStorage.setItem(CART_COUNT_KEY, String(totalCount));
+        } catch (e) {}
+
+        if (cartCountElement) {
+            cartCountElement.textContent = totalCount;
+        }
+        return totalCount;
+    };
+
+    let cartItemCount = 0;
+    const storedItems = readCartItems();
+    if (storedItems !== null) {
+        cartItemCount = storedItems.reduce((sum, item) => sum + (parseInt(item.qty, 10) || 0), 0);
+    } else {
+        try {
+            const savedCount = localStorage.getItem(CART_COUNT_KEY);
+            if (savedCount !== null) {
+                cartItemCount = parseInt(savedCount, 10) || 0;
+            }
+        } catch (e) {
+            cartItemCount = 0;
+        }
     }
 
     const cartCountElement = document.getElementById('cartCount');
@@ -108,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateCartCount = (qty = 1) => {
         cartItemCount += qty;
         try {
-            localStorage.setItem('omniscent_cart_count', cartItemCount);
+            localStorage.setItem(CART_COUNT_KEY, cartItemCount);
         } catch (e) {}
 
         if (cartCountElement) {
@@ -117,6 +149,49 @@ document.addEventListener('DOMContentLoaded', () => {
             void cartCountElement.offsetWidth; // Reflow for CSS animation restart
             cartCountElement.classList.add('bounce');
         }
+    };
+
+    /**
+     * Add or merge a product item into persistent cart storage
+     * @param {Object} item
+     */
+    const addProductToBag = (item) => {
+        const current = readCartItems() || [];
+        const existingIndex = current.findIndex(
+            entry => entry.name === item.name && entry.size === item.size
+        );
+
+        if (existingIndex >= 0) {
+            current[existingIndex].qty = Math.min(20, (current[existingIndex].qty || 1) + (item.qty || 1));
+        } else {
+            current.push({
+                id: item.id || Date.now(),
+                name: item.name || 'Omniscent Fragrance',
+                brand: item.brand || 'Omniscent',
+                size: item.size || '50ml',
+                price: Number(item.price) || 24999,
+                img: item.img || 'product-signature-rose.png',
+                qty: item.qty || 1
+            });
+        }
+
+        writeCartItems(current);
+        if (cartCountElement) {
+            cartCountElement.classList.remove('bounce');
+            void cartCountElement.offsetWidth;
+            cartCountElement.classList.add('bounce');
+        }
+    };
+
+    const parseNumericPrice = (priceText) => {
+        const digits = String(priceText || '').replace(/[^0-9]/g, '');
+        return parseInt(digits, 10) || 24999;
+    };
+
+    const extractImageFilename = (imgElement) => {
+        const src = imgElement ? (imgElement.getAttribute('src') || '') : '';
+        const parts = src.split('/');
+        return parts[parts.length - 1] || 'product-signature-rose.png';
     };
 
     // Attach event listeners to all Add-to-Cart buttons in grids
@@ -128,7 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 event.preventDefault();
                 event.stopPropagation();
                 const productCard = button.closest('.product-card');
-                const productName = productCard ? (productCard.querySelector('.product-name')?.textContent || 'Perfume') : 'Perfume';
+                const productName = productCard ? (productCard.querySelector('.product-name')?.textContent?.trim() || 'Perfume') : 'Perfume';
+                const productBrand = productCard ? (productCard.querySelector('.product-brand')?.textContent?.trim() || 'Omniscent') : 'Omniscent';
+                const priceAttr = productCard ? productCard.getAttribute('data-price') : null;
+                const priceVal = priceAttr ? parseInt(priceAttr, 10) : parseNumericPrice(productCard?.querySelector('.product-price')?.textContent);
+                const imgName = extractImageFilename(productCard?.querySelector('.product-img'));
 
                 // Visual feedback on button
                 const originalHTML = button.innerHTML;
@@ -146,7 +225,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     button.style.color = '';
                 }, 1200);
 
-                updateCartCount(1);
+                addProductToBag({
+                    id: productCard?.getAttribute('data-id') || productCard?.getAttribute('data-product-id'),
+                    name: productName,
+                    brand: productBrand,
+                    size: '50ml',
+                    price: priceVal,
+                    img: imgName,
+                    qty: 1
+                });
                 showCartToast(productName);
             };
         });
@@ -978,8 +1065,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const selectedSizeBtn = document.querySelector('.size-options .size-btn.active');
             const selectedSize = selectedSizeBtn ? selectedSizeBtn.getAttribute('data-size') : '50ml';
+            const sizePrice = Math.round(currentModalProduct.price * currentMultiplier);
 
-            updateCartCount(currentQuantity);
+            addProductToBag({
+                id: currentModalProduct.id,
+                name: currentModalProduct.name,
+                brand: currentModalProduct.brand,
+                size: selectedSize,
+                price: sizePrice,
+                img: currentModalProduct.img,
+                qty: currentQuantity
+            });
             showCartToast(`${currentModalProduct.name} (${selectedSize}) x${currentQuantity}`);
 
             // Visual feedback on modal CTA button
@@ -1043,6 +1139,798 @@ document.addEventListener('DOMContentLoaded', () => {
             closeProductQuickView();
         }
     });
+
+
+    /* ==========================================================================
+       MODULE 9: CHECKOUT FLOW ENGINE
+       Powers checkout.html and Pages/12.  checkout-flow.html.
+       Handles bag rendering, shipping validation, vouchers, Cash on Delivery &
+       Online Payment channels, order review, and Thank You confirmation.
+       ========================================================================== */
+    const checkoutWorkspace = document.getElementById('checkoutWorkspace');
+
+    if (checkoutWorkspace) {
+        const SAMPLE_BAG_ITEMS = [
+            {
+                id: 1,
+                name: 'Signature Rose',
+                brand: 'Omniscent',
+                size: '50ml',
+                price: 28000,
+                img: 'product-signature-rose.png',
+                qty: 1
+            },
+            {
+                id: 2,
+                name: 'Bleu de Chanel',
+                brand: 'Chanel',
+                size: '50ml',
+                price: 24999,
+                img: 'product-bleu-chanel-hq.png',
+                qty: 1
+            }
+        ];
+
+        const VOUCHER_CATALOG = {
+            OMNI10: { type: 'percent', value: 10, label: '10% Off Fragrance Order' },
+            ROSE2000: { type: 'fixed', value: 2000, label: 'Rs. 2,000 Off' },
+            FREESHIP: { type: 'freeship', value: 0, label: 'Complimentary Express Shipping' }
+        };
+
+        const formatCurrency = (amount) => `Rs. ${Math.max(0, Math.round(amount)).toLocaleString()}`;
+
+        const escapeHtml = (str) => String(str || '').replace(/[&<>"']/g, (ch) => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        })[ch]);
+
+        // Load or seed bag items
+        let isPreviewBag = false;
+        let bagItems = readCartItems();
+        if (bagItems === null) {
+            bagItems = SAMPLE_BAG_ITEMS.map(item => ({ ...item }));
+            isPreviewBag = true;
+            writeCartItems(bagItems);
+        }
+
+        const checkoutState = {
+            currentStep: 1,
+            maxReachedStep: 1,
+            orderCompleted: false,
+            deliveryTier: 'standard',
+            paymentMethod: 'cod',
+            onlineChannel: 'card',
+            voucherCode: null,
+            shipping: {
+                fullName: '',
+                phoneNumber: '',
+                emailAddress: '',
+                streetAddress: '',
+                apartment: '',
+                city: '',
+                province: 'Islamabad Capital Territory',
+                postalCode: '',
+                giftNote: ''
+            }
+        };
+
+        // DOM Elements
+        const stepperItems = document.querySelectorAll('#checkoutStepper .stepper-item');
+        const stepPanels = document.querySelectorAll('.checkout-step-panel');
+        const stepThankYou = document.getElementById('stepThankYou');
+
+        const summaryItemsList = document.getElementById('summaryItemsList');
+        const summaryEmptyState = document.getElementById('summaryEmptyState');
+        const previewBagNotice = document.getElementById('previewBagNotice');
+        const restoreSampleBagBtn = document.getElementById('restoreSampleBagBtn');
+        const summaryItemBadge = document.getElementById('summaryItemBadge');
+        const summarySubtotalEl = document.getElementById('summarySubtotal');
+        const summaryShippingEl = document.getElementById('summaryShipping');
+        const summaryDiscountRow = document.getElementById('summaryDiscountRow');
+        const summaryDiscountEl = document.getElementById('summaryDiscount');
+        const summaryTotalEl = document.getElementById('summaryTotal');
+        const summaryVoucherRow = document.getElementById('summaryVoucherRow');
+        const summaryVoucherCodeEl = document.getElementById('summaryVoucherCode');
+        const summaryVoucherSavedEl = document.getElementById('summaryVoucherSaved');
+        const removeVoucherBtn = document.getElementById('removeVoucherBtn');
+        const standardShippingTag = document.getElementById('standardShippingTag');
+        const expressShippingTag = document.getElementById('expressShippingTag');
+
+        const shippingForm = document.getElementById('shippingForm');
+        const paymentForm = document.getElementById('paymentForm');
+        const deliveryCards = document.querySelectorAll('.delivery-options-grid .option-card');
+        const paymentCards = document.querySelectorAll('.payment-methods-list .payment-option-card');
+        const codDetailsPanel = document.getElementById('codDetailsPanel');
+        const onlinePaymentPanel = document.getElementById('onlinePaymentPanel');
+        const onlineSubtabs = document.querySelectorAll('.online-subtab');
+        const channelCard = document.getElementById('channelCard');
+        const channelWallet = document.getElementById('channelWallet');
+
+        const voucherInput = document.getElementById('voucherInput');
+        const applyVoucherBtn = document.getElementById('applyVoucherBtn');
+        const voucherFeedback = document.getElementById('voucherFeedback');
+        const voucherChips = document.querySelectorAll('.voucher-chip');
+
+        const cardNumberInput = document.getElementById('cardNumber');
+        const cardExpiryInput = document.getElementById('cardExpiry');
+
+        const backToShippingBtn = document.getElementById('backToShippingBtn');
+        const backToPaymentBtn = document.getElementById('backToPaymentBtn');
+        const confirmOrderBtn = document.getElementById('confirmOrderBtn');
+        const confirmTerms = document.getElementById('confirmTerms');
+        const printOrderBtn = document.getElementById('printOrderBtn');
+
+        // Totals calculation helper
+        const computeTotals = () => {
+            const subtotal = bagItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const totalQty = bagItems.reduce((sum, item) => sum + item.qty, 0);
+
+            if (bagItems.length === 0) {
+                return { subtotal: 0, shippingCost: 0, discountAmount: 0, total: 0, totalQty: 0, baseShipping: 0 };
+            }
+
+            const standardCost = subtotal >= 20000 ? 0 : 450;
+            const baseShipping = checkoutState.deliveryTier === 'express' ? 950 : standardCost;
+            let shippingCost = baseShipping;
+            let discountAmount = 0;
+
+            if (checkoutState.voucherCode && VOUCHER_CATALOG[checkoutState.voucherCode]) {
+                const rule = VOUCHER_CATALOG[checkoutState.voucherCode];
+                if (rule.type === 'percent') {
+                    discountAmount = Math.round(subtotal * (rule.value / 100));
+                } else if (rule.type === 'fixed') {
+                    discountAmount = Math.min(rule.value, subtotal);
+                } else if (rule.type === 'freeship') {
+                    shippingCost = 0;
+                    discountAmount = baseShipping;
+                }
+            }
+
+            const total = checkoutState.voucherCode === 'FREESHIP'
+                ? Math.max(0, subtotal)
+                : Math.max(0, subtotal - discountAmount + shippingCost);
+
+            return { subtotal, shippingCost, discountAmount, total, totalQty, baseShipping };
+        };
+
+        // Render Order Summary Sidebar
+        const renderOrderSummary = () => {
+            const totals = computeTotals();
+
+            if (previewBagNotice) {
+                previewBagNotice.style.display = (isPreviewBag && bagItems.length > 0) ? 'flex' : 'none';
+            }
+
+            if (summaryItemBadge) {
+                summaryItemBadge.textContent = `${totals.totalQty} Item${totals.totalQty === 1 ? '' : 's'}`;
+            }
+
+            if (standardShippingTag) {
+                standardShippingTag.textContent = totals.subtotal >= 20000 || bagItems.length === 0 ? 'Free' : 'Rs. 450';
+            }
+            if (expressShippingTag) {
+                expressShippingTag.textContent = checkoutState.voucherCode === 'FREESHIP' ? 'Free (FREESHIP)' : 'Rs. 950';
+            }
+
+            if (bagItems.length === 0) {
+                if (summaryItemsList) summaryItemsList.innerHTML = '';
+                if (summaryEmptyState) summaryEmptyState.style.display = 'block';
+            } else {
+                if (summaryEmptyState) summaryEmptyState.style.display = 'none';
+                if (summaryItemsList) {
+                    summaryItemsList.innerHTML = bagItems.map((item, idx) => `
+                        <div class="summary-item" data-index="${idx}">
+                            <img src="${getImgPrefix()}${escapeHtml(item.img)}" alt="${escapeHtml(item.name)}" class="summary-item-img">
+                            <div class="summary-item-info">
+                                <div class="summary-item-name">${escapeHtml(item.name)}</div>
+                                <div class="summary-item-sub">${escapeHtml(item.brand)} &bull; ${escapeHtml(item.size)}</div>
+                                <div class="summary-qty-bar">
+                                    <button type="button" class="sum-qty-btn" data-action="dec" data-index="${idx}" aria-label="Decrease quantity">&minus;</button>
+                                    <span class="sum-qty-val">${item.qty}</span>
+                                    <button type="button" class="sum-qty-btn" data-action="inc" data-index="${idx}" aria-label="Increase quantity">&#43;</button>
+                                </div>
+                            </div>
+                            <div class="summary-item-right">
+                                <span class="summary-item-total">${formatCurrency(item.price * item.qty)}</span>
+                                <button type="button" class="btn-remove-item" data-action="remove" data-index="${idx}">Remove</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            if (summarySubtotalEl) summarySubtotalEl.textContent = formatCurrency(totals.subtotal);
+            if (summaryShippingEl) {
+                if (bagItems.length === 0) {
+                    summaryShippingEl.textContent = 'Rs. 0';
+                } else if (totals.shippingCost === 0) {
+                    summaryShippingEl.textContent = checkoutState.voucherCode === 'FREESHIP' ? 'Free (Voucher)' : 'Free';
+                } else {
+                    summaryShippingEl.textContent = formatCurrency(totals.shippingCost);
+                }
+            }
+
+            const hasVoucher = Boolean(checkoutState.voucherCode && bagItems.length > 0);
+            if (summaryVoucherRow) {
+                summaryVoucherRow.style.display = hasVoucher ? 'flex' : 'none';
+            }
+            if (summaryVoucherCodeEl && hasVoucher) {
+                summaryVoucherCodeEl.textContent = checkoutState.voucherCode;
+            }
+            if (summaryVoucherSavedEl && hasVoucher) {
+                summaryVoucherSavedEl.textContent = totals.discountAmount > 0
+                    ? `-${formatCurrency(totals.discountAmount)}`
+                    : 'Free Shipping';
+            }
+
+            if (summaryDiscountRow) {
+                summaryDiscountRow.style.display = (hasVoucher && checkoutState.voucherCode !== 'FREESHIP' && totals.discountAmount > 0) ? 'flex' : 'none';
+            }
+            if (summaryDiscountEl) {
+                summaryDiscountEl.textContent = `-${formatCurrency(totals.discountAmount)}`;
+            }
+
+            if (summaryTotalEl) {
+                summaryTotalEl.textContent = formatCurrency(totals.total);
+            }
+        };
+
+        // Summary item quantity & remove delegation
+        if (summaryItemsList) {
+            summaryItemsList.addEventListener('click', (e) => {
+                const target = e.target.closest('button[data-action]');
+                if (!target) return;
+                const idx = parseInt(target.getAttribute('data-index'), 10);
+                const action = target.getAttribute('data-action');
+                if (Number.isNaN(idx) || !bagItems[idx]) return;
+
+                isPreviewBag = false;
+                if (action === 'inc') {
+                    bagItems[idx].qty = Math.min(20, bagItems[idx].qty + 1);
+                } else if (action === 'dec') {
+                    if (bagItems[idx].qty > 1) {
+                        bagItems[idx].qty -= 1;
+                    } else {
+                        bagItems.splice(idx, 1);
+                    }
+                } else if (action === 'remove') {
+                    bagItems.splice(idx, 1);
+                }
+
+                writeCartItems(bagItems);
+                renderOrderSummary();
+                if (checkoutState.currentStep === 3) {
+                    populateConfirmationReview();
+                }
+            });
+        }
+
+        if (restoreSampleBagBtn) {
+            restoreSampleBagBtn.addEventListener('click', () => {
+                bagItems = SAMPLE_BAG_ITEMS.map(item => ({ ...item }));
+                isPreviewBag = true;
+                writeCartItems(bagItems);
+                renderOrderSummary();
+                if (checkoutState.currentStep === 3) {
+                    populateConfirmationReview();
+                }
+            });
+        }
+
+        // Field error helpers
+        const setFieldError = (fieldId, message) => {
+            const input = document.getElementById(fieldId);
+            const errEl = document.getElementById(`err-${fieldId}`);
+            if (input) input.classList.toggle('input-invalid', Boolean(message));
+            if (errEl) errEl.textContent = message || '';
+        };
+
+        const clearAllErrors = () => {
+            document.querySelectorAll('.form-input.input-invalid').forEach(el => el.classList.remove('input-invalid'));
+            document.querySelectorAll('.field-error').forEach(el => { el.textContent = ''; });
+        };
+
+        document.querySelectorAll('.checkout-form .form-input').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.id) setFieldError(input.id, '');
+            });
+        });
+
+        // Step Navigation
+        const goToStep = (stepNumber) => {
+            if (checkoutState.orderCompleted && stepNumber < 4) return;
+
+            checkoutState.currentStep = stepNumber;
+            if (stepNumber > checkoutState.maxReachedStep) {
+                checkoutState.maxReachedStep = stepNumber;
+            }
+
+            stepperItems.forEach(item => {
+                const s = parseInt(item.getAttribute('data-step'), 10);
+                item.classList.toggle('active', s === stepNumber);
+                item.classList.toggle('completed', s < stepNumber);
+            });
+
+            if (stepNumber === 4) {
+                checkoutWorkspace.style.display = 'none';
+                if (stepThankYou) stepThankYou.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            checkoutWorkspace.style.display = 'grid';
+            if (stepThankYou) stepThankYou.style.display = 'none';
+
+            stepPanels.forEach(panel => {
+                const pStep = parseInt(panel.getAttribute('data-step'), 10);
+                panel.classList.toggle('active', pStep === stepNumber);
+            });
+
+            if (stepNumber === 3) {
+                populateConfirmationReview();
+            }
+
+            checkoutWorkspace.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        // Validate Step 1 (Shipping & Contact Info)
+        const validateShippingStep = () => {
+            clearAllErrors();
+            let valid = true;
+
+            const fullName = document.getElementById('fullName')?.value.trim() || '';
+            const phoneNumber = document.getElementById('phoneNumber')?.value.trim() || '';
+            const emailAddress = document.getElementById('emailAddress')?.value.trim() || '';
+            const streetAddress = document.getElementById('streetAddress')?.value.trim() || '';
+            const apartment = document.getElementById('apartment')?.value.trim() || '';
+            const city = document.getElementById('city')?.value.trim() || '';
+            const province = document.getElementById('province')?.value || '';
+            const postalCode = document.getElementById('postalCode')?.value.trim() || '';
+            const giftNote = document.getElementById('giftNote')?.value.trim() || '';
+
+            if (fullName.length < 2) {
+                setFieldError('fullName', 'Please enter your full name.');
+                valid = false;
+            }
+            if (phoneNumber.replace(/\D/g, '').length < 7) {
+                setFieldError('phoneNumber', 'Please enter a valid contact phone number.');
+                valid = false;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress)) {
+                setFieldError('emailAddress', 'Please enter a valid email address.');
+                valid = false;
+            }
+            if (streetAddress.length < 4) {
+                setFieldError('streetAddress', 'Please enter your street address.');
+                valid = false;
+            }
+            if (city.length < 2) {
+                setFieldError('city', 'Please enter your city.');
+                valid = false;
+            }
+            if (postalCode.length < 3) {
+                setFieldError('postalCode', 'Please enter a valid postal code.');
+                valid = false;
+            }
+
+            if (valid) {
+                checkoutState.shipping = {
+                    fullName,
+                    phoneNumber,
+                    emailAddress,
+                    streetAddress,
+                    apartment,
+                    city,
+                    province,
+                    postalCode,
+                    giftNote
+                };
+            }
+
+            return valid;
+        };
+
+        // Validate Step 2 (Payment Method)
+        const validatePaymentStep = () => {
+            clearAllErrors();
+            if (bagItems.length === 0) {
+                if (voucherFeedback) {
+                    voucherFeedback.textContent = 'Please add at least one fragrance to your bag before continuing.';
+                    voucherFeedback.className = 'voucher-feedback error';
+                }
+                return false;
+            }
+
+            if (checkoutState.paymentMethod === 'cod') {
+                return true;
+            }
+
+            let valid = true;
+            if (checkoutState.onlineChannel === 'card') {
+                const cardName = document.getElementById('cardName')?.value.trim() || '';
+                const cardNumber = (cardNumberInput?.value || '').replace(/\s+/g, '');
+                const cardExpiry = cardExpiryInput?.value.trim() || '';
+                const cardCvv = document.getElementById('cardCvv')?.value.trim() || '';
+
+                if (cardName.length < 2) {
+                    setFieldError('cardName', 'Enter the name printed on your card.');
+                    valid = false;
+                }
+                if (!/^\d{13,19}$/.test(cardNumber)) {
+                    setFieldError('cardNumber', 'Enter a valid 13 to 19 digit card number.');
+                    valid = false;
+                }
+                if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(cardExpiry)) {
+                    setFieldError('cardExpiry', 'Enter expiry as MM/YY.');
+                    valid = false;
+                }
+                if (!/^\d{3,4}$/.test(cardCvv)) {
+                    setFieldError('cardCvv', 'Enter a valid 3 or 4 digit CVV.');
+                    valid = false;
+                }
+            } else {
+                const walletNumber = document.getElementById('walletNumber')?.value.trim() || '';
+                if (walletNumber.length < 7) {
+                    setFieldError('walletNumber', 'Enter a valid wallet mobile number or IBAN.');
+                    valid = false;
+                }
+            }
+
+            return valid;
+        };
+
+        // Delivery option selection
+        deliveryCards.forEach(card => {
+            const radio = card.querySelector('input[type="radio"]');
+            if (!radio) return;
+            radio.addEventListener('change', () => {
+                deliveryCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                checkoutState.deliveryTier = radio.value;
+                renderOrderSummary();
+            });
+        });
+
+        // Payment option selection (COD vs Online Payment)
+        paymentCards.forEach(card => {
+            const radio = card.querySelector('input[type="radio"]');
+            if (!radio) return;
+            radio.addEventListener('change', () => {
+                paymentCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                checkoutState.paymentMethod = radio.value;
+
+                if (codDetailsPanel) {
+                    codDetailsPanel.style.display = radio.value === 'cod' ? 'block' : 'none';
+                }
+                if (onlinePaymentPanel) {
+                    onlinePaymentPanel.style.display = radio.value === 'online' ? 'block' : 'none';
+                }
+                clearAllErrors();
+            });
+        });
+
+        // Online channel subtabs (Card vs Wallet)
+        onlineSubtabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const channel = tab.getAttribute('data-channel');
+                checkoutState.onlineChannel = channel;
+                onlineSubtabs.forEach(t => {
+                    const active = t === tab;
+                    t.classList.toggle('active', active);
+                    t.setAttribute('aria-selected', String(active));
+                });
+                if (channelCard) channelCard.style.display = channel === 'card' ? 'block' : 'none';
+                if (channelWallet) channelWallet.style.display = channel === 'wallet' ? 'block' : 'none';
+                clearAllErrors();
+            });
+        });
+
+        // Card input formatting
+        if (cardNumberInput) {
+            cardNumberInput.addEventListener('input', (e) => {
+                const digits = e.target.value.replace(/\D/g, '').slice(0, 16);
+                e.target.value = digits.replace(/(\d{4})(?=\d)/g, '$1 ');
+            });
+        }
+
+        if (cardExpiryInput) {
+            cardExpiryInput.addEventListener('input', (e) => {
+                const digits = e.target.value.replace(/\D/g, '').slice(0, 4);
+                e.target.value = digits.length > 2 ? `${digits.slice(0, 2)}/${digits.slice(2)}` : digits;
+            });
+        }
+
+        // Voucher application
+        const applyVoucher = (rawCode) => {
+            const code = String(rawCode || '').trim().toUpperCase();
+            if (!code) {
+                if (voucherFeedback) {
+                    voucherFeedback.textContent = 'Please enter a voucher code first.';
+                    voucherFeedback.className = 'voucher-feedback error';
+                }
+                return;
+            }
+
+            const rule = VOUCHER_CATALOG[code];
+            if (!rule) {
+                if (voucherFeedback) {
+                    voucherFeedback.textContent = `Voucher "${code}" is not valid. Try OMNI10, ROSE2000, or FREESHIP.`;
+                    voucherFeedback.className = 'voucher-feedback error';
+                }
+                return;
+            }
+
+            checkoutState.voucherCode = code;
+            if (voucherInput) voucherInput.value = code;
+            if (voucherFeedback) {
+                voucherFeedback.textContent = `✓ Voucher ${code} applied (${rule.label}).`;
+                voucherFeedback.className = 'voucher-feedback success';
+            }
+            renderOrderSummary();
+        };
+
+        if (applyVoucherBtn) {
+            applyVoucherBtn.addEventListener('click', () => {
+                applyVoucher(voucherInput?.value);
+            });
+        }
+
+        if (voucherInput) {
+            voucherInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    applyVoucher(voucherInput.value);
+                }
+            });
+        }
+
+        voucherChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                applyVoucher(chip.getAttribute('data-code'));
+            });
+        });
+
+        if (removeVoucherBtn) {
+            removeVoucherBtn.addEventListener('click', () => {
+                checkoutState.voucherCode = null;
+                if (voucherInput) voucherInput.value = '';
+                if (voucherFeedback) {
+                    voucherFeedback.textContent = 'Voucher removed.';
+                    voucherFeedback.className = 'voucher-feedback';
+                }
+                renderOrderSummary();
+                if (checkoutState.currentStep === 3) {
+                    populateConfirmationReview();
+                }
+            });
+        }
+
+        // Populate Step 3 Review
+        const getPaymentDisplayDetails = () => {
+            if (checkoutState.paymentMethod === 'cod') {
+                return {
+                    title: 'Cash on Delivery (COD)',
+                    sub: 'Pay in cash when your parcel is delivered.'
+                };
+            }
+            if (checkoutState.onlineChannel === 'card') {
+                const rawDigits = (cardNumberInput?.value || '').replace(/\D/g, '');
+                const last4 = rawDigits.slice(-4) || '4242';
+                return {
+                    title: 'Online Payment — Credit / Debit Card',
+                    sub: `Card ending in •••• ${last4}`
+                };
+            }
+            const provider = document.getElementById('walletProvider')?.value || 'Digital Wallet';
+            const walletNum = document.getElementById('walletNumber')?.value.trim() || '';
+            return {
+                title: `Online Payment — ${provider}`,
+                sub: walletNum ? `Account: ${walletNum}` : 'Instant digital transfer'
+            };
+        };
+
+        const populateConfirmationReview = () => {
+            const s = checkoutState.shipping;
+            const reviewContact = document.getElementById('reviewContact');
+            const reviewAddress = document.getElementById('reviewAddress');
+            const reviewDelivery = document.getElementById('reviewDelivery');
+            const reviewGiftNote = document.getElementById('reviewGiftNote');
+            const reviewPayment = document.getElementById('reviewPayment');
+            const reviewPaymentSub = document.getElementById('reviewPaymentSub');
+            const reviewVoucher = document.getElementById('reviewVoucher');
+            const reviewItemsList = document.getElementById('reviewItemsList');
+
+            if (reviewContact) {
+                reviewContact.textContent = `${s.fullName} • ${s.phoneNumber} • ${s.emailAddress}`;
+            }
+            if (reviewAddress) {
+                const aptPart = s.apartment ? `, ${s.apartment}` : '';
+                reviewAddress.textContent = `${s.streetAddress}${aptPart}, ${s.city}, ${s.province} ${s.postalCode}`;
+            }
+            if (reviewDelivery) {
+                reviewDelivery.textContent = checkoutState.deliveryTier === 'express'
+                    ? 'Express Priority Dispatch (1–2 business days)'
+                    : 'Standard Boutique Courier (3–5 business days)';
+            }
+            if (reviewGiftNote) {
+                if (s.giftNote) {
+                    reviewGiftNote.textContent = `Gift Note: "${s.giftNote}"`;
+                    reviewGiftNote.style.display = 'block';
+                } else {
+                    reviewGiftNote.style.display = 'none';
+                }
+            }
+
+            const payInfo = getPaymentDisplayDetails();
+            if (reviewPayment) reviewPayment.textContent = payInfo.title;
+            if (reviewPaymentSub) reviewPaymentSub.textContent = payInfo.sub;
+            if (reviewVoucher) {
+                reviewVoucher.textContent = checkoutState.voucherCode
+                    ? `Voucher Applied: ${checkoutState.voucherCode} (${VOUCHER_CATALOG[checkoutState.voucherCode]?.label || ''})`
+                    : 'No voucher applied';
+                reviewVoucher.style.color = checkoutState.voucherCode ? '#2E7D4F' : 'var(--color-text-light)';
+            }
+
+            if (reviewItemsList) {
+                reviewItemsList.innerHTML = bagItems.map(item => `
+                    <div class="review-item-row">
+                        <div class="review-item-left">
+                            <img src="${getImgPrefix()}${escapeHtml(item.img)}" alt="${escapeHtml(item.name)}" class="review-item-thumb">
+                            <div>
+                                <div class="review-item-name">${escapeHtml(item.name)}</div>
+                                <div class="review-item-meta">${escapeHtml(item.brand)} &bull; ${escapeHtml(item.size)} &bull; Qty ${item.qty}</div>
+                            </div>
+                        </div>
+                        <span class="review-item-price">${formatCurrency(item.price * item.qty)}</span>
+                    </div>
+                `).join('');
+            }
+        };
+
+        // Form Submissions & Back/Edit Buttons
+        if (shippingForm) {
+            shippingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (validateShippingStep()) {
+                    goToStep(2);
+                }
+            });
+        }
+
+        if (paymentForm) {
+            paymentForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (validatePaymentStep()) {
+                    goToStep(3);
+                }
+            });
+        }
+
+        if (backToShippingBtn) {
+            backToShippingBtn.addEventListener('click', () => goToStep(1));
+        }
+
+        if (backToPaymentBtn) {
+            backToPaymentBtn.addEventListener('click', () => goToStep(2));
+        }
+
+        document.querySelectorAll('.btn-edit-step').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetStep = parseInt(btn.getAttribute('data-goto-step'), 10);
+                if (targetStep) goToStep(targetStep);
+            });
+        });
+
+        document.querySelectorAll('.stepper-btn[data-step-target]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (checkoutState.orderCompleted) return;
+                const target = parseInt(btn.getAttribute('data-step-target'), 10);
+                if (target === checkoutState.currentStep) return;
+                if (target < checkoutState.currentStep) {
+                    goToStep(target);
+                } else if (target === 2 && validateShippingStep()) {
+                    goToStep(2);
+                } else if (target === 3 && validateShippingStep() && validatePaymentStep()) {
+                    goToStep(3);
+                }
+            });
+        });
+
+        // Final Order Confirmation -> Thank You Message
+        if (confirmOrderBtn) {
+            confirmOrderBtn.addEventListener('click', () => {
+                clearAllErrors();
+                if (bagItems.length === 0) {
+                    setFieldError('confirmTerms', 'Your bag is empty. Please add a fragrance before confirming.');
+                    return;
+                }
+                if (confirmTerms && !confirmTerms.checked) {
+                    setFieldError('confirmTerms', 'Please confirm your order details to proceed.');
+                    return;
+                }
+
+                const totals = computeTotals();
+                const s = checkoutState.shipping;
+                const payInfo = getPaymentDisplayDetails();
+                const orderNum = `#OMN-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+                const formattedDate = new Date().toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+
+                const setText = (id, val) => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = val;
+                };
+
+                setText('tyCustomerName', s.fullName || 'Valued Guest');
+                setText('tyCustomerEmail', s.emailAddress || 'your inbox');
+                setText('tyOrderNumber', orderNum);
+                setText('tyOrderDate', formattedDate);
+                setText('tyEstDelivery', checkoutState.deliveryTier === 'express' ? '1–2 Business Days' : '3–5 Business Days');
+                setText('tyPaymentMethod', payInfo.title);
+                setText('tyRecipientName', s.fullName);
+
+                const aptPart = s.apartment ? `, ${s.apartment}` : '';
+                setText('tyShippingAddress', `${s.streetAddress}${aptPart}, ${s.city}, ${s.province} ${s.postalCode}`);
+                setText('tyRecipientPhone', `${s.phoneNumber} • ${s.emailAddress}`);
+
+                const tyGiftNote = document.getElementById('tyGiftNote');
+                if (tyGiftNote) {
+                    if (s.giftNote) {
+                        tyGiftNote.textContent = `Gift Card: "${s.giftNote}"`;
+                        tyGiftNote.style.display = 'block';
+                    } else {
+                        tyGiftNote.style.display = 'none';
+                    }
+                }
+
+                const tyItemsList = document.getElementById('tyItemsList');
+                if (tyItemsList) {
+                    tyItemsList.innerHTML = bagItems.map(item => `
+                        <div class="ty-item-row">
+                            <span>${escapeHtml(item.name)} (${escapeHtml(item.size)}) &times; ${item.qty}</span>
+                            <strong>${formatCurrency(item.price * item.qty)}</strong>
+                        </div>
+                    `).join('');
+                }
+
+                setText('tySubtotal', formatCurrency(totals.subtotal));
+                setText('tyShipping', totals.shippingCost === 0 ? 'Free' : formatCurrency(totals.shippingCost));
+
+                const tyDiscountRow = document.getElementById('tyDiscountRow');
+                if (tyDiscountRow) {
+                    if (checkoutState.voucherCode && totals.discountAmount > 0 && checkoutState.voucherCode !== 'FREESHIP') {
+                        setText('tyVoucherCode', checkoutState.voucherCode);
+                        setText('tyDiscount', `-${formatCurrency(totals.discountAmount)}`);
+                        tyDiscountRow.style.display = 'flex';
+                    } else {
+                        tyDiscountRow.style.display = 'none';
+                    }
+                }
+
+                setText('tyTotalLabel', checkoutState.paymentMethod === 'cod' ? 'Cash Due on Delivery' : 'Total Paid');
+                setText('tyTotal', formatCurrency(totals.total));
+
+                checkoutState.orderCompleted = true;
+                bagItems = [];
+                writeCartItems([]);
+                goToStep(4);
+            });
+        }
+
+        if (printOrderBtn) {
+            printOrderBtn.addEventListener('click', () => window.print());
+        }
+
+        // Initial Render
+        renderOrderSummary();
+    }
 
     console.log('✨ Omniscent luxury scripts successfully initialized.');
 });
