@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Collection | OMNISCENT &mdash; Luxury Fragrance Boutique</title>
+  <meta name="description" content="Explore OMNISCENT Men's Collection: bold ouds, refined citruses, and deep woody ambers — masculine fragrances crafted for the discerning gentleman.">
+  <meta name="theme-color" content="#F6ECE5">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body data-collection="men">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Omniscent Homepage">
+        <img src="../images/logo.svg" alt="Omniscent Emblem" class="brand-icon">
+        <span class="brand-name">OMNISCENT</span>
+      </a>
+
+      <nav class="nav-center" aria-label="Main Navigation">
+        <a href="shop.html" class="nav-pill">
+          <span>Shop All</span>
+          <span class="dropdown-arrow">&#9662;</span>
+        </a>
+        <span class="nav-divider" aria-hidden="true">|</span>
+        <a href="men.html" class="nav-link is-active" aria-current="page">Men</a>
+        <span class="nav-divider" aria-hidden="true">|</span>
+        <a href="women.html" class="nav-link">Women</a>
+        <span class="nav-divider" aria-hidden="true">|</span>
+        <a href="unisex.html" class="nav-link">Unisex</a>
+      </nav>
+
+      <div class="nav-right">
+        <span class="nav-divider-light" aria-hidden="true">|</span>
+
+        <button type="button" class="nav-action-btn search-btn" id="searchBtn" aria-label="Search Fragrances">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <button type="button" class="nav-action-btn" id="wishlistBtn" aria-label="Saved Wishlist">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="cart-count" id="wishlistCount">0</span>
+        </button>
+
+        <a href="cart.html" class="nav-action-btn cart-btn" id="cartBtn" aria-label="Shopping Bag">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav-drawer" id="mobileNav" aria-hidden="true">
+      <a href="index.html" class="mobile-nav-link">Home</a>
+      <a href="shop.html" class="mobile-nav-link">Shop All</a>
+      <a href="men.html" class="mobile-nav-link is-active">Men</a>
+      <a href="women.html" class="mobile-nav-link">Women</a>
+      <a href="unisex.html" class="mobile-nav-link">Unisex &amp; Niche</a>
+      <a href="scent-finder.html" class="mobile-nav-link">Scent Finder</a>
+      <a href="gift-sets.html" class="mobile-nav-link">Gift Sets</a>
+      <a href="cart.html" class="mobile-nav-link">Shopping Bag</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="shop-hero-section">
+      <div class="container">
+        <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+          <a href="index.html" class="breadcrumb-link">Home</a>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <a href="shop.html" class="breadcrumb-link">Shop All</a>
+          <span class="breadcrumb-separator" aria-hidden="true">/</span>
+          <span class="breadcrumb-current">Men's Collection</span>
+        </nav>
+        <div id="collection-hero-slot"></div>
+      </div>
+    </section>
+
+    <section class="collection-band collection-band--alt" aria-labelledby="mood-heading">
+      <div class="container">
+        <div class="section-header-ornate">
+          <div class="ornate-bridge-wrap">
+            <svg class="ornate-arch-line" viewBox="0 0 360 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 22 H105 C135 22 150 4 180 4 C210 4 225 22 255 22 H360" stroke="#C8B5AD" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span class="section-tagline">CURATED MOODS</span>
+          </div>
+          <h2 class="section-title" id="mood-heading">Filter by <span class="accent-italic">Aura</span></h2>
+          <p class="section-subtitle">Select an atmosphere below to filter our masculine editions by occasion and character.</p>
+        </div>
+        <div class="mood-grid" id="mood-strip"></div>
+      </div>
+    </section>
+
+    <section class="collection-band collection-band--cream" aria-label="Wearing rituals">
+      <div class="container" id="signature-module"></div>
+    </section>
+
+    <section class="shop-catalog-section" id="catalog" aria-labelledby="catalog-heading">
+      <div class="container">
+        <div class="section-header-ornate">
+          <div class="ornate-bridge-wrap">
+            <svg class="ornate-arch-line" viewBox="0 0 360 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 22 H105 C135 22 150 4 180 4 C210 4 225 22 255 22 H360" stroke="#C8B5AD" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span class="section-tagline">MEN'S ATELIER</span>
+          </div>
+          <h2 class="section-title" id="catalog-heading">Masculine <span class="accent-italic">Classics</span></h2>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="scent-chips-wrap" id="scent-chips"></div>
+
+          <div class="toolbar-controls">
+            <div class="catalog-search-wrap">
+              <svg class="catalog-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <label class="sr-only" for="catalogSearch">Search Men's fragrances</label>
+              <input type="text" id="catalogSearch" class="catalog-search-input" placeholder="Search oud, vetiver, Creed...">
+            </div>
+
+            <div class="catalog-sort-wrap">
+              <label class="sort-label" for="catalogSort">Sort:</label>
+              <select id="catalogSort" class="catalog-sort-select">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="rating-desc">Highest Rated</option>
+                <option value="longevity-desc">Longest Wearing</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="advanced-filters-row">
+            <div class="price-range-group">
+              <label for="filter-concentration" style="font-weight:600;color:var(--color-text-muted);">Strength:</label>
+              <select id="filter-concentration" class="catalog-sort-select">
+                <option value="All">All Concentrations</option>
+                <option value="Eau de Parfum">Eau de Parfum</option>
+                <option value="Extrait de Parfum">Extrait de Parfum</option>
+                <option value="Eau de Toilette">Eau de Toilette</option>
+              </select>
+            </div>
+
+            <div class="price-range-group">
+              <label for="filter-price" style="font-weight:600;color:var(--color-text-muted);">Max 50ml:</label>
+              <input id="filter-price" type="range" min="20000" max="50000" step="1000" value="50000">
+              <span id="filter-price-readout" style="font-weight:600;">Up to Rs. 50,000</span>
+            </div>
+
+            <div class="toggle-group">
+              <label class="checkbox-label"><input id="filter-stock" type="checkbox"> In Stock Only</label>
+              <label class="checkbox-label"><input id="filter-wishlist" type="checkbox"> Saved Wishlist</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="catalog-status-bar">
+          <span class="catalog-count-text" id="catalogCountDisplay" aria-live="polite">Loading...</span>
+          <div class="active-chips-row" id="active-filter-chips"></div>
+          <button type="button" class="btn-reset-filters" id="btnResetFilters">Reset All Filters</button>
+        </div>
+
+        <div class="shop-products-grid" id="shopProductsGrid"></div>
+
+        <div class="catalog-empty-state" id="catalogEmptyState" hidden>
+          <h3 style="font-family:var(--font-serif);font-size:1.6rem;margin-bottom:0.5rem;">No Fragrances Found</h3>
+          <p style="font-size:0.9rem;color:var(--color-text-muted);margin-bottom:1.5rem;">Try clearing a scent note filter, widening your budget slider, or searching for a single note like "oud" or "vetiver".</p>
+          <button type="button" class="btn-primary btn-sm" id="btnEmptyReset">Reset All Filters</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection-band collection-band--cream" id="calculator-section" aria-labelledby="calc-heading">
+      <div class="container">
+        <div class="section-header-ornate">
+          <div class="ornate-bridge-wrap"><span class="section-tagline">PRIVILEGE ESTIMATOR</span></div>
+          <h2 class="section-title" id="calc-heading">Wardrobe Quote &amp; <span class="accent-italic">Value</span></h2>
+          <p class="section-subtitle">Select up to 3 bottles to calculate Duo (10%) or Collector Trio (15%) savings, complimentary delivery (Rs. 25,000+), and cost per day of wear.</p>
+        </div>
+
+        <div class="calculator-grid">
+          <div class="luxury-panel">
+            <div class="calc-slot-list" id="calculator-slots"></div>
+            <div class="form-grid-2" style="margin-top:1.1rem;">
+              <div class="field-group" style="margin-bottom:0;">
+                <label class="field-label" for="calc-sprays">Daily Sprays (1–8)</label>
+                <input id="calc-sprays" class="form-control" type="number" min="1" max="8" value="3">
+              </div>
+              <div class="field-group" style="display:flex;align-items:flex-end;margin-bottom:0;">
+                <label class="checkbox-label" style="margin-bottom:0.55rem;">
+                  <input id="calc-giftbox" type="checkbox">
+                  <span>Velvet Gift Box (+Rs. 1,500, free at Rs. 40,000+)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="summary-box" aria-live="polite">
+            <h3>Live Wardrobe Quote</h3>
+            <div class="summary-line"><span>Bottles Subtotal</span><span id="calc-subtotal">Rs. 0</span></div>
+            <div class="summary-line"><span id="calc-discount-label">Privilege Discount</span><span id="calc-discount-val">-Rs. 0</span></div>
+            <div class="summary-line"><span>Velvet Gift Box</span><span id="calc-gift-val">Rs. 0</span></div>
+            <div class="summary-line"><span>Express Delivery</span><span id="calc-ship-val">Rs. 0</span></div>
+            <div class="summary-line summary-line--total"><span>Estimated Quote</span><span id="calc-total">Rs. 0</span></div>
+
+            <div class="wear-metrics">
+              <div class="wear-metric-card">
+                <strong id="calc-days">0 days</strong>
+                <span>Estimated Wear Duration</span>
+              </div>
+              <div class="wear-metric-card">
+                <strong id="calc-cpw">Rs. 0 / day</strong>
+                <span>Cost Per Day of Wear</span>
+              </div>
+            </div>
+
+            <button type="button" id="calc-add-bundle-btn" class="btn-primary" style="width:100%;">Add Selected Bottles to Bag</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection-band collection-band--alt" id="sample-form-section" aria-labelledby="sample-heading">
+      <div class="container">
+        <div class="section-header-ornate">
+          <div class="ornate-bridge-wrap"><span class="section-tagline">PRIVATE CONSULTATION</span></div>
+          <h2 class="section-title" id="sample-heading">Discovery <span class="accent-italic">Sample</span> Trio</h2>
+          <p class="section-subtitle">Choose 2 or 3 Men's fragrances to trial on skin at home before selecting your full-size flacon.</p>
+        </div>
+
+        <div class="form-layout">
+          <form id="sample-request-form" class="luxury-panel" novalidate>
+            <div class="form-grid-2">
+              <div class="field-group">
+                <label class="field-label" for="sample-name">Full Name *</label>
+                <input id="sample-name" class="form-control" type="text" placeholder="e.g. Ali Hassan" required>
+                <div class="field-error" id="err-sample-name" aria-live="polite"></div>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="sample-email">Email Address *</label>
+                <input id="sample-email" class="form-control" type="email" placeholder="you@example.com" required>
+                <div class="field-error" id="err-sample-email" aria-live="polite"></div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="sample-intensity">Preferred Scent Strength *</label>
+              <select id="sample-intensity" class="form-control" required>
+                <option value="">Select strength...</option>
+                <option value="Clean &amp; Crisp (Fresh office wear)">Clean &amp; Crisp (Fresh office wear)</option>
+                <option value="Tailored All-Day (Balanced signature)">Tailored All-Day (Balanced signature)</option>
+                <option value="Rich Extrait (Commanding trail)">Rich Extrait (Commanding trail)</option>
+              </select>
+              <div class="field-error" id="err-sample-intensity" aria-live="polite"></div>
+            </div>
+
+            <div class="field-group">
+              <span class="field-label">Select 2–3 Men's Fragrances *</span>
+              <div class="sample-checkbox-grid" id="sample-checkboxes"></div>
+              <div class="field-error" id="err-sample-scents" aria-live="polite"></div>
+            </div>
+
+            <div class="field-group">
+              <div style="display:flex;justify-content:space-between;align-items:baseline;">
+                <label class="field-label" for="sample-notes">Occasion &amp; Note Preferences *</label>
+                <span class="field-hint" id="notes-char-count">0 / 200</span>
+              </div>
+              <textarea id="sample-notes" class="form-control" rows="3" maxlength="200" placeholder="Share notes you adore or avoid (e.g. love dark oud and sandalwood, prefer moderate sillage)..."></textarea>
+              <div class="field-error" id="err-sample-notes" aria-live="polite"></div>
+            </div>
+
+            <button type="submit" class="btn-primary">Save Sample Trio Request</button>
+            <div id="sample-form-status" hidden role="status" aria-live="polite"></div>
+          </form>
+
+          <aside class="luxury-panel" aria-label="Saved sample requests">
+            <span class="product-brand">Browser Persistence</span>
+            <h3 style="font-family:var(--font-serif);font-size:1.35rem;margin-bottom:0.85rem;">Saved Trio Requests</h3>
+            <div id="saved-sample-requests"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection-band collection-band--cream" aria-labelledby="recent-heading">
+      <div class="container">
+        <div class="section-header-ornate">
+          <div class="ornate-bridge-wrap"><span class="section-tagline">CROSS-PAGE MEMORY</span></div>
+          <h2 class="section-title" id="recent-heading">Recently <span class="accent-italic">Explored</span></h2>
+        </div>
+        <div class="recent-grid" id="recent-grid"></div>
+      </div>
+    </section>
+
+    <section class="collection-band collection-band--alt" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header-ornate">
+          <div class="ornate-bridge-wrap"><span class="section-tagline">FRAGRANCE CARE</span></div>
+          <h2 class="section-title" id="faq-heading">Boutique <span class="accent-italic">Questions</span></h2>
+        </div>
+        <div class="accordion-list" id="faq-accordion"></div>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-inner">
+          <div>
+            <h2 class="newsletter-title">Stay in the Loop</h2>
+            <p class="newsletter-subtitle">Get exclusive offers and new arrivals.</p>
+          </div>
+          <div class="newsletter-form-col">
+            <form class="newsletter-form" id="newsletterForm" novalidate>
+              <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+              <button type="submit" class="btn-subscribe">
+                <span>Subscribe</span>
+                <span aria-hidden="true">&rarr;</span>
+              </button>
+            </form>
+            <div class="newsletter-feedback" id="newsletterFeedback" role="status"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <a href="index.html" class="brand-logo" aria-label="Omniscent Homepage">
+          <img src="../images/logo.svg" alt="Omniscent Emblem" class="brand-icon">
+          <span class="brand-name">OMNISCENT</span>
+        </a>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <a href="shop.html" class="footer-link">Shop All</a>
+          <span class="footer-divider" aria-hidden="true">|</span>
+          <a href="men.html" class="footer-link">Men</a>
+          <span class="footer-divider" aria-hidden="true">|</span>
+          <a href="women.html" class="footer-link">Women</a>
+          <span class="footer-divider" aria-hidden="true">|</span>
+          <a href="unisex.html" class="footer-link">Unisex</a>
+        </nav>
+
+        <div class="footer-socials-group">
+          <span class="footer-social-vdivider" aria-hidden="true"></span>
+          <div class="social-icons-wrap">
+            <a href="https://instagram.com" class="social-icon-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://tiktok.com" class="social-icon-link" aria-label="TikTok" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://facebook.com" class="social-icon-link" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://youtube.com" class="social-icon-link" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-line">
+          <span class="footer-line" aria-hidden="true"></span>
+          <p class="copyright-text">&copy; 2025 Omniscent. All rights reserved.</p>
+          <span class="footer-line" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Persistent Comparison Dock -->
+  <div id="compare-dock" class="compare-dock" hidden aria-live="polite">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.65rem;">
+      <strong>Compare:</strong>
+      <div class="compare-items" id="compare-dock-items"></div>
+    </div>
+    <div style="display:flex;gap:0.5rem;">
+      <button type="button" id="open-compare-btn" class="btn-primary btn-sm">Compare</button>
+      <button type="button" id="clear-compare-btn" class="btn-secondary btn-sm">Clear</button>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="search-modal" id="searchModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="searchModalTitle">
+    <div class="search-modal-backdrop" id="searchBackdrop"></div>
+    <div class="search-modal-box">
+      <div class="search-box-header">
+        <h3 class="search-modal-title" id="searchModalTitle">Search Fragrances</h3>
+        <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Close Search Overlay">&times;</button>
+      </div>
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="search-field" id="searchField" placeholder="Search by name, scent family, or note..." autocomplete="off">
+      </div>
+      <div class="search-quick-tags">
+        <span class="quick-label">Trending Notes:</span>
+        <button type="button" class="quick-tag" data-query="Oud">Oud</button>
+        <button type="button" class="quick-tag" data-query="Vetiver">Vetiver</button>
+        <button type="button" class="quick-tag" data-query="Woody">Woody</button>
+        <button type="button" class="quick-tag" data-query="Amber">Amber</button>
+        <button type="button" class="quick-tag" data-query="Creed">Creed</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick-View Product Modal -->
+  <div class="product-modal" id="productModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalPerfumeName">
+    <div class="product-modal-backdrop" id="modalBackdrop"></div>
+    <div class="product-modal-content">
+      <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close Product Modal">&times;</button>
+      <div class="modal-product-grid">
+        <div class="modal-visual-wrap">
+          <span class="modal-badge" id="modalBadge">Signature</span>
+          <img src="../images/bottle-creed-aventus.svg" alt="Fragrance bottle" class="modal-img" id="modalImg">
+        </div>
+        <div>
+          <span class="modal-brand" id="modalBrand">Omniscent</span>
+          <h2 class="modal-name" id="modalPerfumeName">Aventus</h2>
+          <div class="modal-rating-row">
+            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="rating-val" id="modalRating">5.0</span>
+            <span class="rating-count" id="modalReviewsCount">(128 reviews)</span>
+          </div>
+          <div class="modal-price-wrap">
+            <span class="modal-price" id="modalPrice">Rs. 42,000</span>
+            <span class="tax-info">Taxes included &bull; Complimentary delivery Rs. 25,000+</span>
+          </div>
+          <p class="modal-description" id="modalDesc"></p>
+
+          <div class="modal-notes-pyramid">
+            <div><span class="note-level">Top Notes</span><span class="note-ingredients" id="modalTopNotes"></span></div>
+            <div><span class="note-level">Heart Notes</span><span class="note-ingredients" id="modalHeartNotes"></span></div>
+            <div><span class="note-level">Base Notes</span><span class="note-ingredients" id="modalBaseNotes"></span></div>
+          </div>
+
+          <div class="modal-size-selector">
+            <span class="selector-label">Bottle Volume:</span>
+            <div class="size-options" id="modalSizeOptions"></div>
+          </div>
+
+          <div class="modal-purchase-row">
+            <div class="quantity-control">
+              <button type="button" class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-val" id="qtyVal">1</span>
+              <button type="button" class="qty-btn" id="qtyPlus" aria-label="Increase quantity">+</button>
+            </div>
+            <button type="button" class="btn-primary" id="modalAddToCartBtn" style="flex:1;">Add to Bag</button>
+            <button type="button" class="btn-secondary btn-sm" id="modalWishBtn">Save ♡</button>
+          </div>
+
+          <div style="border-top:1px solid var(--color-border-light);padding-top:0.85rem;margin-top:0.5rem;">
+            <strong style="font-size:0.8rem;display:block;margin-bottom:0.45rem;">Wearer Impressions</strong>
+            <div id="modalReviewList" style="max-height:110px;overflow-y:auto;margin-bottom:0.65rem;"></div>
+            <form id="modalReviewForm" style="display:flex;gap:0.45rem;flex-wrap:wrap;" novalidate>
+              <input id="modalRevAuthor" class="form-control" type="text" placeholder="Your name" style="flex:1 1 110px;padding:0.45rem 0.7rem;">
+              <input id="modalRevText" class="form-control" type="text" placeholder="Share impression..." style="flex:2 1 170px;padding:0.45rem 0.7rem;">
+              <button type="submit" class="btn-secondary btn-sm">Post</button>
+              <div id="modalRevError" class="field-error" style="width:100%;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comparison Modal -->
+  <div class="product-modal" id="compareModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="compareModalTitle">
+    <div class="product-modal-backdrop" id="compareBackdrop"></div>
+    <div class="product-modal-content">
+      <button type="button" class="modal-close-btn" id="compareCloseBtn" aria-label="Close Comparison Modal">&times;</button>
+      <span class="modal-brand">Side-by-Side Analysis</span>
+      <h2 class="modal-name" id="compareModalTitle" style="margin-bottom:1.1rem;">Fragrance Comparison</h2>
+      <div id="compareModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Shopping Bag Drawer -->
+  <div id="cart-drawer" class="drawer-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2 id="cartDrawerTitle" style="font-family:var(--font-serif);font-size:1.4rem;">Shopping Bag</h2>
+        <button type="button" class="btn-secondary btn-sm" data-close-drawer="cart-drawer">Close &times;</button>
+      </div>
+      <div class="drawer-body" id="cart-drawer-body"></div>
+      <div class="drawer-footer" id="cart-drawer-footer"></div>
+    </div>
+  </div>
+
+  <!-- Wishlist Drawer -->
+  <div id="wishlist-drawer" class="drawer-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="wishDrawerTitle">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h2 id="wishDrawerTitle" style="font-family:var(--font-serif);font-size:1.4rem;">Saved Wishlist</h2>
+        <button type="button" class="btn-secondary btn-sm" data-close-drawer="wishlist-drawer">Close &times;</button>
+      </div>
+      <div class="drawer-body" id="wishlist-drawer-body"></div>
+    </div>
+  </div>
+
+  <!-- Luxury Toast Notification -->
+  <div class="cart-toast" id="cartToast" role="status" aria-live="polite">
+    <svg class="toast-icon" id="toastIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+    <span class="toast-msg" id="toastMessage">Added to your bag!</span>
+    <a href="cart.html" class="toast-link" id="toastViewBagLink" style="color:var(--color-accent-rose);font-size:0.78rem;font-weight:600;text-decoration:underline;">View Bag</a>
+  </div>
+
+  <script src="../js/products.js"></script>
+  <script src="../js/wishlist.js"></script>
+  <script src="../js/cart.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>
